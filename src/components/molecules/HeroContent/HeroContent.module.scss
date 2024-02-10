@@ -1,3 +1,11 @@
 .container {
   width: 58rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  & button {
+    margin-top: 2rem;
+    margin-left: 1.45rem;
+  }
 }
