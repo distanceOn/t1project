@@ -7,6 +7,9 @@
   align-items: center;
   padding-right: 0.8rem;
   margin-right: -2.18rem;
+  & * {
+    cursor: pointer;
+  }
 }
 
 .cart {
