@@ -1,12 +1,14 @@
-import S from './Logo.module.scss';
+import { getClassName } from './utils';
 type LogoProps = {
-  type: 'small' | 'default';
+  type: 'small' | 'default' | 'bg';
+  link?: boolean;
 };
-export const Logo = ({ type }: LogoProps) => {
-  const className = type === 'small' ? S.logo__small : S.logo;
+export const Logo = ({ type, link }: LogoProps) => {
+  const className = getClassName(type);
+
   return (
     <h4 className={className}>
-      <a href='/'>Goods4you</a>
+      {link ? <a href='/'>Goods4you</a> : 'Goods4you'}
     </h4>
   );
 };

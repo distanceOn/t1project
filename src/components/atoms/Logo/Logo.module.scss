@@ -1,7 +1,13 @@
 .logo {
   font-size: 3rem;
   font-weight: 700;
-  &__small {
+  &_small {
     font-size: 2rem;
+  }
+  &_bg {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.12);
+    font-size: 20rem;
+    font-weight: 700;
   }
 }

@@ -1,0 +1,14 @@
+.hero {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  padding-right: 2.1rem;
+  & h4 {
+    z-index: 2;
+    top: 6.5rem;
+    left: 3.2rem;
+  }
+  & div {
+    z-index: 10;
+  }
+}

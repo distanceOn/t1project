@@ -5,10 +5,10 @@ type ButtonProps = {
   href?: string;
 };
 
-export const Button = ({ children }: ButtonProps) => {
+export const Button = ({ children, href }: ButtonProps) => {
   return (
     <button className={S.button}>
-      <a href={S.href}>{children}</a>
+      {href ? <a href={href}>{children}</a> : children}
     </button>
   );
 };
