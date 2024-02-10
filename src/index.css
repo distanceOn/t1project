@@ -11,6 +11,10 @@ code {
     monospace;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 * {
   box-sizing: border-box;
   color: #fff;
@@ -24,4 +28,22 @@ a {
 }
 ul {
   list-style: none;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 50%; /* Уменьшение базового размера шрифта для малых экранов */
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 56.25%; /* Увеличение для планшетов */
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 75%; /* Увеличение для десктопов */
+  }
 }
