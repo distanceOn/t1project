@@ -3,7 +3,9 @@ import S from './Filter.module.scss';
 export const Filter = () => {
   return (
     <div className={S.container}>
-      <Title type='default'>Catalog</Title>
+      <Title type='filter'>
+        Selection <br /> by parameters
+      </Title>
     </div>
   );
 };

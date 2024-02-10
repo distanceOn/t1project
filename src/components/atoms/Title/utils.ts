@@ -4,6 +4,8 @@ export const getClassName = (type: string) => {
   switch (type) {
     case 'hero':
       return S.title_hero;
+    case 'filter':
+      return S.title_filter;
     default:
       return S.title;
   }
