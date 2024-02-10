@@ -7,8 +7,10 @@ export const Header = () => {
   return (
     <header className={S.header}>
       <Logo type='default' />
-      <HeaderMenu />
-      <HeaderCart />
+      <div className={S.container}>
+        <HeaderMenu />
+        <HeaderCart />
+      </div>
     </header>
   );
 };
