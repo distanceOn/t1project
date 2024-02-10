@@ -1,3 +1,4 @@
+import { Filter } from '../../components/organisms/Filter/Filter';
 import { Header } from '../../components/organisms/Header/Header';
 import { Hero } from '../../components/organisms/Hero/Hero';
 import { CatalogTemplate } from '../../components/templates/CatalogTemplate/CatalogTemplate';
@@ -13,7 +14,9 @@ export const CatalogPage = () => {
       <HeroTemplate>
         <Hero />
       </HeroTemplate>
-      <CatalogTemplate>dsadasdasdasdsad</CatalogTemplate>
+      <CatalogTemplate>
+        <Filter />
+      </CatalogTemplate>
     </div>
   );
 };

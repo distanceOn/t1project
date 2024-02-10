@@ -1,5 +1,12 @@
-.hero {
-  font-size: 3.6rem;
-  font-weight: 400;
-  line-height: 5.04rem;
+.title {
+  color: #444b58;
+  font-size: 3rem;
+  font-weight: 700;
+
+  &_hero {
+    color: #fff;
+    font-size: 3.6rem;
+    font-weight: 400;
+    line-height: 5.04rem;
+  }
 }
