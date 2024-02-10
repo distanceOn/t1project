@@ -1,21 +1,5 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-html {
-  font-size: 62.5%;
-}
-
 * {
+  font-family: 'Jost', sans-serif;
   box-sizing: border-box;
   color: #fff;
   margin: 0;
@@ -44,6 +28,6 @@ ul {
 
 @media (min-width: 1200px) {
   html {
-    font-size: 75%; /* Увеличение для десктопов */
+    font-size: 62.5%; /* Увеличение для десктопов */
   }
 }
