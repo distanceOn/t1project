@@ -5,5 +5,5 @@ type HeaderTemplateProps = {
   children: React.ReactNode;
 };
 export const HeaderTemplate = ({ children }: HeaderTemplateProps) => {
-  return <div className={S.container}>{children}</div>;
+  return <section className={S.container}>{children}</section>;
 };

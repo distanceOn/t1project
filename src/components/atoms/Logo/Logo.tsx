@@ -1,14 +1,18 @@
-import { getClassName } from './utils';
+import { getLogoClassName } from './utils';
 type LogoProps = {
   type: 'small' | 'default' | 'bg';
   link?: boolean;
 };
 export const Logo = ({ type, link }: LogoProps) => {
-  const className = getClassName(type);
+  const className = getLogoClassName(type);
 
-  return (
-    <h4 className={className}>
-      {link ? <a href='/'>Goods4you</a> : 'Goods4you'}
-    </h4>
-  );
+  if (link) {
+    return (
+      <h4 className={className}>
+        <a href='/'>Goods4you</a>
+      </h4>
+    );
+  }
+
+  return <h4 className={className}>Goods4you</h4>;
 };

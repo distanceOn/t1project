@@ -1,6 +1,6 @@
 import S from './Logo.module.scss';
 
-export const getClassName = (type: string) => {
+export const getLogoClassName = (type: string) => {
   switch (type) {
     case 'bg':
       return S.logo_bg;
