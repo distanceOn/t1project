@@ -6,6 +6,8 @@ export const getBtnClassName = (type: string) => {
       return S.btn_category;
     case 'apply':
       return S.btn_apply;
+    case 'reset':
+      return S.btn_reset;
     default:
       return S.btn;
   }

@@ -1,7 +1,7 @@
 import { getBtnClassName } from './utils';
 
 type ButtonProps = {
-  type: 'category' | 'apply' | 'default';
+  type: 'category' | 'apply' | 'default' | 'reset';
   children: React.ReactNode;
   href?: string;
 };
