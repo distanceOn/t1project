@@ -2,9 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  & :last-child {
-    align-self: center;
-  }
 }
 
 .categories {
