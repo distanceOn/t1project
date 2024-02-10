@@ -1,9 +1,9 @@
-import S from './HeaderTemplate.module.scss'
-export const HeaderTemplate = () => {
+import React from 'react';
+import S from './HeaderTemplate.module.scss';
 
-  return (
-    <div className={S.container}>
-      HeaderTemplate
-    </div>
-  )
-}
+type HeaderTemplateProps = {
+  children: React.ReactNode;
+};
+export const HeaderTemplate = ({ children }: HeaderTemplateProps) => {
+  return <div className={S.container}>{children}</div>;
+};
