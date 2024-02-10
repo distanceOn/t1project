@@ -17,7 +17,7 @@ export const CatalogPage = () => {
       </HeroTemplate>
       <CatalogTemplate>
         <Title type='default'>Catalog</Title>
-        <div>
+        <div className={S.catalog}>
           <Filter />
         </div>
       </CatalogTemplate>

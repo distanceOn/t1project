@@ -2,7 +2,7 @@ import { getClassName } from './utils';
 
 type TitleProps = {
   children: React.ReactNode;
-  type: 'hero' | 'filter' | 'default';
+  type: 'hero' | 'filter' | 'min' | 'default';
 };
 
 export const Title = ({ children, type }: TitleProps) => {
@@ -14,6 +14,10 @@ export const Title = ({ children, type }: TitleProps) => {
 
   if (type === 'filter') {
     return <h3 className={className}>{children}</h3>;
+  }
+
+  if (type === 'min') {
+    return <h4 className={className}>{children}</h4>;
   }
 
   return <h2 className={className}>{children}</h2>;

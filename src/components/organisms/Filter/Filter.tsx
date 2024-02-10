@@ -6,6 +6,7 @@ export const Filter = () => {
       <Title type='filter'>
         Selection <br /> by parameters
       </Title>
+      <Title type='min'>Category</Title>
     </div>
   );
 };

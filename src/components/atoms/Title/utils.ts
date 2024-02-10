@@ -6,6 +6,8 @@ export const getClassName = (type: string) => {
       return S.title_hero;
     case 'filter':
       return S.title_filter;
+    case 'min':
+      return S.title_min;
     default:
       return S.title;
   }
