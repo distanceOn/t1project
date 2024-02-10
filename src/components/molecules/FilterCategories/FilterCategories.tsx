@@ -22,6 +22,7 @@ export const FilterCategories = () => {
           </Button>
         ))}
       </div>
+      <Button type='apply'>Apply</Button>
     </div>
   );
 };

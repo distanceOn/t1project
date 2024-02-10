@@ -6,6 +6,17 @@
   align-items: center;
   border-radius: 4px;
   background: #f14f4f;
+  &_apply {
+    width: 23.9rem;
+    padding: 2.2rem 4.8rem;
+    border-radius: 4px;
+    border: 1px solid #fff4ee;
+    background: #444b58;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+
   &_category {
     background-color: transparent;
     height: 5.7rem;

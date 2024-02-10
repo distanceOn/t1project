@@ -5,7 +5,8 @@
 }
 
 .categories {
+  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
-  border-radius: 0px 1.143px 0px 0px;
+  border-radius: 1.143px 1.143px 0.286px 0.286px;
 }
