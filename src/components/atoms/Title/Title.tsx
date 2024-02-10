@@ -1,4 +1,4 @@
-import { getClassName } from './utils';
+import { getTitleClassName } from './utils';
 
 type TitleProps = {
   children: React.ReactNode;
@@ -6,7 +6,7 @@ type TitleProps = {
 };
 
 export const Title = ({ children, type }: TitleProps) => {
-  const className = getClassName(type);
+  const className = getTitleClassName(type);
 
   if (type === 'hero') {
     return <h1 className={className}>{children}</h1>;

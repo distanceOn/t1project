@@ -1,4 +1,5 @@
 import { Title } from '../../atoms/Title/Title';
+import { FilterCategories } from '../../molecules/FilterCategories/FilterCategories';
 import S from './Filter.module.scss';
 export const Filter = () => {
   return (
@@ -6,7 +7,7 @@ export const Filter = () => {
       <Title type='filter'>
         Selection <br /> by parameters
       </Title>
-      <Title type='min'>Category</Title>
+      <FilterCategories />
     </div>
   );
 };

@@ -4,9 +4,9 @@ import S from './Hero.module.scss';
 
 export const Hero = () => {
   return (
-    <section className={S.hero}>
+    <div className={S.hero}>
       <Logo type='bg' />
       <HeroContent />
-    </section>
+    </div>
   );
 };

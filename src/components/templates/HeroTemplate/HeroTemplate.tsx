@@ -4,5 +4,5 @@ type HeroTemplateProps = {
   children: React.ReactNode;
 };
 export const HeroTemplate = ({ children }: HeroTemplateProps) => {
-  return <div className={S.container}>{children}</div>;
+  return <section className={S.container}>{children}</section>;
 };

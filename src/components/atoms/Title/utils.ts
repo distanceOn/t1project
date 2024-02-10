@@ -1,6 +1,6 @@
 import S from './Title.module.scss';
 
-export const getClassName = (type: string) => {
+export const getTitleClassName = (type: string) => {
   switch (type) {
     case 'hero':
       return S.title_hero;

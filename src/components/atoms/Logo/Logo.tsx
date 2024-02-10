@@ -1,10 +1,10 @@
-import { getClassName } from './utils';
+import { getLogoClassName } from './utils';
 type LogoProps = {
   type: 'small' | 'default' | 'bg';
   link?: boolean;
 };
 export const Logo = ({ type, link }: LogoProps) => {
-  const className = getClassName(type);
+  const className = getLogoClassName(type);
 
   if (link) {
     return (
