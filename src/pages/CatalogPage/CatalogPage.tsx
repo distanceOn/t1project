@@ -1,4 +1,5 @@
 import { Header } from '../../components/organisms/Header/Header';
+import { Hero } from '../../components/organisms/Hero/Hero';
 import { HeaderTemplate } from '../../components/templates/HeaderTemplate/HeaderTemplate';
 import { HeroTemplate } from '../../components/templates/HeroTemplate/HeroTemplate';
 import S from './CatalogPage.module.scss';
@@ -9,7 +10,7 @@ export const CatalogPage = () => {
         <Header />
       </HeaderTemplate>
       <HeroTemplate>
-        <h1>Catalog</h1>
+        <Hero />
       </HeroTemplate>
     </div>
   );
