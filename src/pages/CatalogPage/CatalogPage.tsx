@@ -7,6 +7,7 @@ import { CatalogTemplate } from '../../components/templates/CatalogTemplate/Cata
 import { HeaderTemplate } from '../../components/templates/HeaderTemplate/HeaderTemplate';
 import { HeroTemplate } from '../../components/templates/HeroTemplate/HeroTemplate';
 import S from './CatalogPage.module.scss';
+import { AboutTemplate } from '../../components/templates/AboutTemplate/AboutTemplate';
 export const CatalogPage = () => {
   return (
     <div className={S.container}>
@@ -23,6 +24,7 @@ export const CatalogPage = () => {
           <Products />
         </div>
       </CatalogTemplate>
+      <AboutTemplate>dasdsada</AboutTemplate>
     </div>
   );
 };
