@@ -13,7 +13,9 @@ export const HeroContent = () => {
         We sell smartphones, laptops, clothes, shoes <br /> and many other
         products at low prices
       </Text>
-      <Button type='default'>Go to shopping</Button>
+      <Button href='#' type='default'>
+        Go to shopping
+      </Button>
     </div>
   );
 };

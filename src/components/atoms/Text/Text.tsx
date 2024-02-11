@@ -1,10 +1,12 @@
-import S from './Text.module.scss';
+import { getTextClassName } from './utils';
 
 type TextProps = {
   children: React.ReactNode;
-  type: 'hero';
+  type: 'hero' | 'price';
 };
 
-export const Text = ({ children }: TextProps) => {
-  return <p className={S.text}>{children}</p>;
+export const Text = ({ children, type }: TextProps) => {
+  const className = getTextClassName(type);
+
+  return <p className={className}>{children}</p>;
 };

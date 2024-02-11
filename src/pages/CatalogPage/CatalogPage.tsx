@@ -1,4 +1,5 @@
 import { Title } from '../../components/atoms/Title/Title';
+import { Products } from '../../components/organisms/Products/Products';
 import { Filter } from '../../components/organisms/Filter/Filter';
 import { Header } from '../../components/organisms/Header/Header';
 import { Hero } from '../../components/organisms/Hero/Hero';
@@ -19,6 +20,7 @@ export const CatalogPage = () => {
         <Title type='default'>Catalog</Title>
         <div className={S.catalog}>
           <Filter />
+          <Products />
         </div>
       </CatalogTemplate>
     </div>
