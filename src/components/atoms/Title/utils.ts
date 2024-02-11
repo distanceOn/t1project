@@ -8,6 +8,8 @@ export const getTitleClassName = (type: string) => {
       return S.title_filter;
     case 'min':
       return S.title_min;
+    case 'about':
+      return S.title_about;
     default:
       return S.title;
   }

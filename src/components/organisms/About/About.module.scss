@@ -1,0 +1,16 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 40rem;
+}
+
+.container {
+  width: 47.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4.2rem;
+  & > :last-child {
+    align-self: flex-end;
+  }
+}
