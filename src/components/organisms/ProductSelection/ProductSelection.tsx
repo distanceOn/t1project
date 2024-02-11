@@ -1,5 +1,6 @@
 import { Text } from '../../atoms/Text/Text';
 import { Title } from '../../atoms/Title/Title';
+import { ChoiceCard } from '../../molecules/ChoiceCard/ChoiceCard';
 import S from './ProductSelection.module.scss';
 
 export const ProductSelection = () => {
@@ -11,6 +12,12 @@ export const ProductSelection = () => {
           Answer three questions and we will send you a catalog with the most
           suitable products for you.
         </Text>
+      </div>
+      <div className={S.products}>
+        <Title type='filter'>What type of product are you considering?</Title>
+        <div className={S.list}>
+          <ChoiceCard />
+        </div>
       </div>
     </div>
   );

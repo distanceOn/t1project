@@ -1,5 +1,5 @@
 import { Button } from '../../atoms/Button/Button';
-import { ProductCard } from '../../molecules/Product/ProductCard';
+import { ProductCard } from '../../molecules/ProductCard/ProductCard';
 import S from './Products.module.scss';
 
 export const Products = () => {
