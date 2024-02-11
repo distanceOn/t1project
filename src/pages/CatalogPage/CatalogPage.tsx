@@ -9,6 +9,7 @@ import { HeroTemplate } from '../../components/templates/HeroTemplate/HeroTempla
 import S from './CatalogPage.module.scss';
 import { AboutTemplate } from '../../components/templates/AboutTemplate/AboutTemplate';
 import { About } from '../../components/organisms/About/About';
+import { ProductSelection } from '../../components/organisms/ProductSelection/ProductSelection';
 export const CatalogPage = () => {
   return (
     <div className={S.container}>
@@ -28,6 +29,9 @@ export const CatalogPage = () => {
       <AboutTemplate>
         <About />
       </AboutTemplate>
+      <CatalogTemplate>
+        <ProductSelection />
+      </CatalogTemplate>
     </div>
   );
 };
