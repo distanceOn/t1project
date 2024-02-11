@@ -5,7 +5,7 @@ import S from './Hero.module.scss';
 export const Hero = () => {
   return (
     <div className={S.hero}>
-      <Logo type='bg' />
+      <Logo color='grey' size='bg' />
       <HeroContent />
     </div>
   );

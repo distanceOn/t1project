@@ -16,7 +16,7 @@ export const About = () => {
         </Text>
       </div>
       <Quote>
-        <Logo type='small' />
+        <Logo color='white' size='small' />
       </Quote>
     </div>
   );
