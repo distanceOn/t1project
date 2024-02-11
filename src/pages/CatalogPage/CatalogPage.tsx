@@ -3,9 +3,7 @@ import { Products } from '../../components/organisms/Products/Products';
 import { Filter } from '../../components/organisms/Filter/Filter';
 import { Header } from '../../components/organisms/Header/Header';
 import { Hero } from '../../components/organisms/Hero/Hero';
-import { CatalogTemplate } from '../../components/templates/CatalogTemplate/CatalogTemplate';
-import { HeaderTemplate } from '../../components/templates/HeaderTemplate/HeaderTemplate';
-import { HeroTemplate } from '../../components/templates/HeroTemplate/HeroTemplate';
+import { GenericTemplate } from '../../components/templates/GenericTemplate/GenericTemplate';
 import S from './CatalogPage.module.scss';
 import { AboutTemplate } from '../../components/templates/AboutTemplate/AboutTemplate';
 import { About } from '../../components/organisms/About/About';
@@ -13,25 +11,25 @@ import { ProductSelection } from '../../components/organisms/ProductSelection/Pr
 export const CatalogPage = () => {
   return (
     <div className={S.container}>
-      <HeaderTemplate>
+      <GenericTemplate color='purple' padding='min'>
         <Header />
-      </HeaderTemplate>
-      <HeroTemplate>
+      </GenericTemplate>
+      <GenericTemplate color='purple' padding='medium'>
         <Hero />
-      </HeroTemplate>
-      <CatalogTemplate>
+      </GenericTemplate>
+      <GenericTemplate color='white' padding='small'>
         <Title type='default'>Catalog</Title>
         <div className={S.catalog}>
           <Filter />
           <Products />
         </div>
-      </CatalogTemplate>
+      </GenericTemplate>
       <AboutTemplate>
         <About />
       </AboutTemplate>
-      <CatalogTemplate>
+      <GenericTemplate color='white' padding='small'>
         <ProductSelection />
-      </CatalogTemplate>
+      </GenericTemplate>
     </div>
   );
 };
