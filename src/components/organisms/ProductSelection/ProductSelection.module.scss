@@ -1,0 +1,40 @@
+.container {
+  padding: 4rem 10rem 4rem;
+  border-radius: 4px;
+  background: #fff4ee;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.products {
+  padding: 2rem 0 3.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 0.3rem;
+  margin-bottom: 2rem;
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem 7rem;
+}
+
+@media (max-width: 768px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
