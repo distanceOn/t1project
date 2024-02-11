@@ -2,7 +2,7 @@ import { getTextClassName } from './utils';
 
 type TextProps = {
   children: React.ReactNode;
-  type: 'hero' | 'price' | 'select';
+  type: 'hero' | 'price' | 'select' | 'checkbox';
 };
 
 export const Text = ({ children, type }: TextProps) => {

@@ -6,6 +6,8 @@ export const getTextClassName = (type: string) => {
       return S.text_price;
     case 'select':
       return S.text_select;
+    case 'checkbox':
+      return S.text_checkbox;
     default:
       return S.text;
   }

@@ -1,0 +1,12 @@
+.card {
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  & > :last-child {
+    margin-top: 1rem;
+  }
+  & * {
+    cursor: pointer;
+  }
+}
