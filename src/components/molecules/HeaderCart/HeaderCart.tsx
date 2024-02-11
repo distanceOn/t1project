@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { CartIcon } from '../../atoms/icons/CartIcon';
 import S from './HeaderCart.module.scss';
-import { BgEllipse } from '../../atoms/icons/BgCircle';
+import { BgEllipse } from '../../atoms/icons/BgEllipse';
 export const HeaderCart = () => {
   const [cartCount] = useState(1);
   return (

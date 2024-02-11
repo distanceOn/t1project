@@ -1,0 +1,21 @@
+.container {
+  position: absolute;
+}
+
+.ellipse {
+  fill: #f14f4f;
+  position: absolute;
+  bottom: 4.2rem;
+  right: 3.1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.decoration {
+  position: absolute;
+  border-radius: 29.7rem;
+  &_large {
+    position: absolute;
+    border-radius: 64.4rem;
+  }
+}
