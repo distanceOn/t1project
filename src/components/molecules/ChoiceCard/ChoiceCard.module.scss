@@ -1,11 +1,10 @@
 .card {
   cursor: pointer;
-
+  width: fit-content;
   display: flex;
   flex-direction: column;
-  & > :last-child {
-    margin-top: 1rem;
-  }
+  gap: 1rem;
+
   & * {
     cursor: pointer;
   }

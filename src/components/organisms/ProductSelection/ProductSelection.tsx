@@ -16,7 +16,9 @@ export const ProductSelection = () => {
       <div className={S.products}>
         <Title type='filter'>What type of product are you considering?</Title>
         <div className={S.list}>
-          <ChoiceCard />
+          {Array.from({ length: 6 }).map((_, index) => (
+            <ChoiceCard key={index} />
+          ))}
         </div>
       </div>
     </div>
