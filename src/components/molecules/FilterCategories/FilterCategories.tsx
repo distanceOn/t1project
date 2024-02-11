@@ -16,7 +16,7 @@ export const FilterCategories = () => {
     <div className={S.container}>
       <Title type='min'>Categories</Title>
       <div className={S.categories}>
-        {categories.map((index, category) => (
+        {categories.map((category, index) => (
           <Button key={index} type='category'>
             {category}
           </Button>

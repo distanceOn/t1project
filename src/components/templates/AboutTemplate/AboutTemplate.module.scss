@@ -2,6 +2,21 @@
   position: relative;
   background-color: #484283;
   padding: 22.2rem 13.4rem 14.9rem;
+
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 13rem;
+    width: 68rem;
+    height: 58rem;
+    background-image: url('./bg.jpg');
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    clip-path: polygon(25% 0%, 100% 0, 75% 100%, 0 100%);
+  }
 }
 
 .decoration {
