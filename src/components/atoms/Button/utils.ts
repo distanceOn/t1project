@@ -8,6 +8,8 @@ export const getBtnClassName = (type: string) => {
       return S.btn_apply;
     case 'reset':
       return S.btn_reset;
+    case 'catalog':
+      return S.btn + ' ' + S.btn_catalog;
     default:
       return S.btn;
   }

@@ -1,7 +1,7 @@
 import { getBtnClassName } from './utils';
 
 type ButtonProps = {
-  type: 'category' | 'apply' | 'default' | 'reset';
+  type: 'category' | 'apply' | 'default' | 'reset' | 'catalog';
   children: React.ReactNode;
   href?: string;
 };
@@ -9,7 +9,7 @@ type ButtonProps = {
 export const Button = ({ type, children, href }: ButtonProps) => {
   const className = getBtnClassName(type);
 
-  if (href && type === 'default') {
+  if (href) {
     return (
       <button className={className}>
         <a href={href}>{children}</a>

@@ -1,3 +1,4 @@
+import { Button } from '../../atoms/Button/Button';
 import { ProductCard } from '../../molecules/Product/ProductCard';
 import S from './Products.module.scss';
 
@@ -9,6 +10,9 @@ export const Products = () => {
           <ProductCard key={index} />
         ))}
       </ul>
+      <Button href='#' type='catalog'>
+        Show more
+      </Button>
     </div>
   );
 };
