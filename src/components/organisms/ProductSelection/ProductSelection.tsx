@@ -9,7 +9,7 @@ export const ProductSelection = () => {
     <div className={S.container}>
       <div className={S.header}>
         <Title type='filter'>We will select the perfect product for you</Title>
-        <Text type='select'>
+        <Text color='lightgrey' size='default'>
           Answer three questions and we will send you a catalog with the most
           suitable products for you.
         </Text>

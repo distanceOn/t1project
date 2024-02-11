@@ -9,7 +9,7 @@ export const HeroContent = () => {
       <Title type='hero'>
         Any products from famous brands with worldwide delivery
       </Title>
-      <Text type='hero'>
+      <Text color='white' size='lineheight'>
         We sell smartphones, laptops, clothes, shoes <br /> and many other
         products at low prices
       </Text>

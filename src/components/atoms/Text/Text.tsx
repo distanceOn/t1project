@@ -1,12 +1,8 @@
-import { getTextClassName } from './utils';
+import { TextProps } from './types';
+import { getTotalTextClassName } from './utils';
 
-type TextProps = {
-  children: React.ReactNode;
-  type: 'hero' | 'price' | 'select' | 'checkbox' | 'steps';
-};
+export const Text = ({ color, size, children }: TextProps) => {
+  const totalClassName = getTotalTextClassName({ color, size });
 
-export const Text = ({ children, type }: TextProps) => {
-  const className = getTextClassName(type);
-
-  return <p className={className}>{children}</p>;
+  return <p className={totalClassName}>{children}</p>;
 };

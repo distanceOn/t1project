@@ -5,7 +5,10 @@ import S from './Steps.module.scss';
 export const Steps = () => {
   return (
     <div className={S.container}>
-      <Text type='steps'>1 of 3</Text>;<Button type='steps'>Next step</Button>
+      <Text color='lightgrey' size='default'>
+        1 of 3
+      </Text>
+      <Button type='steps'>Next step</Button>
     </div>
   );
 };

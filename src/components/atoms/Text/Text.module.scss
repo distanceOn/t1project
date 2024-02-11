@@ -1,25 +1,28 @@
 .text {
-  font-size: 1.6rem;
   font-weight: 600;
-  line-height: 2.24rem;
-  &_price {
-    color: #444b58;
+  font-size: 1.6rem;
+  &_default {
+    font-size: 1.6rem;
+  }
+
+  &_thin {
     font-size: 2rem;
     font-weight: 400;
   }
-  &_select {
-    color: #808080;
-    font-size: 1.6rem;
-    font-weight: 600;
+
+  &_lineheight {
+    line-height: 2.24rem;
   }
-  &_checkbox {
+}
+
+.color {
+  &_white {
+    color: #fff;
+  }
+  &_grey {
     color: #444b58;
-    font-size: 1.6rem;
-    font-weight: 600;
   }
-  &_steps {
+  &_lightgrey {
     color: #808080;
-    font-size: 1.6rem;
-    font-weight: 600;
   }
 }
