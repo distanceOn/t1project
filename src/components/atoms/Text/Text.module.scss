@@ -1,5 +1,10 @@
 .text {
   font-size: 1.6rem;
   font-weight: 600;
-  line-height: 2.24rem; /* 22.4px */
+  line-height: 2.24rem;
+  &_price {
+    color: #444b58;
+    font-size: 2rem;
+    font-weight: 400;
+  }
 }
