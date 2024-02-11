@@ -1,6 +1,7 @@
 import { Text } from '../../atoms/Text/Text';
 import { Title } from '../../atoms/Title/Title';
 import { ChoiceCard } from '../../molecules/ChoiceCard/ChoiceCard';
+import { Steps } from '../../molecules/Steps/Steps';
 import S from './ProductSelection.module.scss';
 
 export const ProductSelection = () => {
@@ -21,6 +22,7 @@ export const ProductSelection = () => {
           ))}
         </div>
       </div>
+      <Steps />
     </div>
   );
 };

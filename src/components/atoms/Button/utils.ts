@@ -10,6 +10,8 @@ export const getBtnClassName = (type: string) => {
       return S.btn_reset;
     case 'catalog':
       return S.btn + ' ' + S.btn_catalog;
+    case 'steps':
+      return S.btn_steps;
     default:
       return S.btn;
   }

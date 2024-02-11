@@ -44,6 +44,19 @@
   &_catalog {
     width: 17.1rem;
   }
+
+  &_steps {
+    border-radius: 4px;
+    border: 1px solid #444b58;
+    background: transparent;
+    width: 14.8rem;
+    height: 5rem;
+    padding: 2.2rem 4.2rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #444b58;
+  }
 }
 
 @media (max-width: 600px) {
