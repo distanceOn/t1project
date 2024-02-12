@@ -5,6 +5,8 @@
   justify-content: center;
   width: fit-content;
   cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
 
   & * {
     cursor: pointer;
