@@ -9,6 +9,7 @@ import { AboutTemplate } from '../../components/templates/AboutTemplate/AboutTem
 import { About } from '../../components/organisms/About/About';
 import { ProductSelection } from '../../components/organisms/ProductSelection/ProductSelection';
 import { TeamTemplate } from '../../components/templates/TeamTemplate/TeamTemplate';
+import { Team } from '../../components/organisms/Team/Team';
 export const CatalogPage = () => {
   return (
     <div className={S.container}>
@@ -33,7 +34,9 @@ export const CatalogPage = () => {
       <GenericTemplate color='white' padding='small'>
         <ProductSelection />
       </GenericTemplate>
-      <TeamTemplate>dasdas</TeamTemplate>
+      <TeamTemplate>
+        <Team />
+      </TeamTemplate>
     </div>
   );
 };

@@ -1,8 +1,16 @@
 import { getPictureClassName, getSrcAndAlt } from './utils';
 
 type PictureProps = {
-  size: 'small' | 'default';
-  image: 'shoes' | 'choice';
+  size: 'small' | 'default' | 'large';
+  image:
+    | 'shoes'
+    | 'choice'
+    | 'andre'
+    | 'anna'
+    | 'fedor'
+    | 'masha'
+    | 'maxim'
+    | 'sasha';
 };
 
 export const Picture = ({ size, image }: PictureProps) => {
