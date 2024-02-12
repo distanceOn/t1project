@@ -1,7 +1,7 @@
 import { Title } from '../../components/atoms/Title/Title';
 import { Products } from '../../components/organisms/Products/Products';
 import { Filter } from '../../components/organisms/Filter/Filter';
-import { Header } from '../../components/organisms/Header/Header';
+import { HeaderFooter } from '../../components/organisms/HeaderFooter/HeaderFooter';
 import { Hero } from '../../components/organisms/Hero/Hero';
 import { GenericTemplate } from '../../components/templates/GenericTemplate/GenericTemplate';
 import S from './CatalogPage.module.scss';
@@ -15,7 +15,7 @@ export const CatalogPage = () => {
   return (
     <div className={S.container}>
       <GenericTemplate color='purple' padding='min'>
-        <Header />
+        <HeaderFooter type='header' />
       </GenericTemplate>
       <GenericTemplate color='purple' padding='medium'>
         <Hero />
@@ -40,6 +40,9 @@ export const CatalogPage = () => {
       </TeamTemplate>
       <GenericTemplate color='white' padding='xsmall'>
         <Faq />
+      </GenericTemplate>
+      <GenericTemplate color='black' padding='min'>
+        <HeaderFooter type='footer' />
       </GenericTemplate>
     </div>
   );

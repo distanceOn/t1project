@@ -1,4 +1,4 @@
-export type Colors = 'white' | 'purple';
+export type Colors = 'white' | 'purple' | 'black';
 export type Paddings = 'min' | 'small' | 'xsmall' | 'medium' | 'large';
 
 export type Styles = {

@@ -6,6 +6,7 @@ export const getColorClassName = (color: Colors) => {
   const colorClassNames = {
     white: S.color_white,
     purple: S.color_purple,
+    black: S.color_black,
   };
 
   return colorClassNames[color];
