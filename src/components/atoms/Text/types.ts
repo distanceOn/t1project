@@ -1,4 +1,4 @@
-export type TextColors = 'white' | 'grey' | 'lightgrey';
+export type TextColors = 'white' | 'grey' | 'lightgrey' | 'black';
 export type TextSizes = 'default' | 'thin' | 'lineheight';
 
 export type TextStyles = {
