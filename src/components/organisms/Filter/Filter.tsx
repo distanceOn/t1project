@@ -9,8 +9,12 @@ export const Filter = () => {
         Selection <br /> by parameters
       </Title>
       <FilterCategories />
-      <Button type='apply'>Apply</Button>
-      <Button type='reset'>Reset</Button>
+      <Button color='secondary' type='apply'>
+        Apply
+      </Button>
+      <Button color='transparent' type='reset'>
+        Reset
+      </Button>
     </div>
   );
 };

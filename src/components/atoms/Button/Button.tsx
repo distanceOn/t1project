@@ -1,13 +1,8 @@
-import { getBtnClassName } from './utils';
+import { ButtonProps } from './types';
+import { getTotalBtnClassName } from './utils';
 
-type ButtonProps = {
-  type: 'category' | 'apply' | 'default' | 'reset' | 'catalog' | 'steps';
-  children: React.ReactNode;
-  href?: string;
-};
-
-export const Button = ({ type, children, href }: ButtonProps) => {
-  const className = getBtnClassName(type);
+export const Button = ({ color, type, children, href }: ButtonProps) => {
+  const className = getTotalBtnClassName({ color, type });
 
   if (href) {
     return (

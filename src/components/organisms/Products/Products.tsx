@@ -10,7 +10,7 @@ export const Products = () => {
           <ProductCard key={index} />
         ))}
       </ul>
-      <Button href='#' type='catalog'>
+      <Button color='primary' href='#' type='catalog'>
         Show more
       </Button>
     </div>

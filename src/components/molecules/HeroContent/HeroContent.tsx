@@ -13,7 +13,7 @@ export const HeroContent = () => {
         We sell smartphones, laptops, clothes, shoes <br /> and many other
         products at low prices
       </Text>
-      <Button href='#' type='default'>
+      <Button color='primary' href='#' type='default'>
         Go to shopping
       </Button>
     </div>

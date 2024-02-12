@@ -8,7 +8,9 @@ export const Steps = () => {
       <Text color='lightgrey' size='default'>
         1 of 3
       </Text>
-      <Button type='steps'>Next step</Button>
+      <Button color='transparent' type='steps'>
+        Next step
+      </Button>
     </div>
   );
 };
