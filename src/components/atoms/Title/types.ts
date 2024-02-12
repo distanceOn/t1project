@@ -1,5 +1,5 @@
-export type TitleColors = 'white' | 'grey';
-export type TitleSizes = 'min' | 'small' | 'default' | 'large';
+export type TitleColors = 'white' | 'grey' | 'black';
+export type TitleSizes = 'min' | 'xmin' | 'small' | 'default' | 'large';
 
 export type TitleStyles = {
   color: TitleColors;

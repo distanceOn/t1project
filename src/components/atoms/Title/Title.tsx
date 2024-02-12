@@ -12,7 +12,7 @@ export const Title = ({ children, color, size }: TitleProps) => {
     return <h3 className={className}>{children}</h3>;
   }
 
-  if (size === 'min') {
+  if (size === 'min' || size === 'xmin') {
     return <h4 className={className}>{children}</h4>;
   }
 

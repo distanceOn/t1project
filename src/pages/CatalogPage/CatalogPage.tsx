@@ -10,6 +10,7 @@ import { About } from '../../components/organisms/About/About';
 import { ProductSelection } from '../../components/organisms/ProductSelection/ProductSelection';
 import { TeamTemplate } from '../../components/templates/TeamTemplate/TeamTemplate';
 import { Team } from '../../components/organisms/Team/Team';
+import { Faq } from '../../components/organisms/Faq/Faq';
 export const CatalogPage = () => {
   return (
     <div className={S.container}>
@@ -37,6 +38,9 @@ export const CatalogPage = () => {
       <TeamTemplate>
         <Team />
       </TeamTemplate>
+      <GenericTemplate color='white' padding='xsmall'>
+        <Faq />
+      </GenericTemplate>
     </div>
   );
 };

@@ -15,6 +15,7 @@ export const getPaddingClassName = (padding: Paddings) => {
   const paddingClassNames = {
     min: S.padding_min,
     small: S.padding_small,
+    xsmall: S.padding_xsmall,
     medium: S.padding_medium,
     large: S.padding_large,
   };
