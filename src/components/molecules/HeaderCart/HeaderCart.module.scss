@@ -1,0 +1,44 @@
+.container {
+  font-size: 1.4rem;
+  font-weight: 600;
+  width: 9.6336rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 0.8rem;
+  margin-right: -2.18rem;
+  & * {
+    cursor: pointer;
+  }
+}
+
+.cart {
+  width: fit-content;
+  display: flex;
+  position: relative;
+
+  &__icon {
+    width: 2.0281rem;
+    height: 1.4983rem;
+    fill: #fff;
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0.9rem;
+  left: 1.117rem;
+  &__bg {
+    width: 1.6225rem;
+    height: 1.3698rem;
+    fill: #f14f4f;
+  }
+  &__num {
+    position: absolute;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}

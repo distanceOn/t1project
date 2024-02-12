@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.categories {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 1.143px 1.143px 0.286px 0.286px;
+}

@@ -1,0 +1,23 @@
+.logo {
+  font-weight: 700;
+
+  &_small {
+    font-size: 2rem;
+  }
+  &_default {
+    font-size: 3rem;
+  }
+  &_bg {
+    position: absolute;
+    font-size: 20rem;
+  }
+}
+
+.color {
+  &_white {
+    color: #fff;
+  }
+  &_grey {
+    color: rgba(255, 255, 255, 0.12);
+  }
+}

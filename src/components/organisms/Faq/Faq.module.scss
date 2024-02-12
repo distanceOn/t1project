@@ -1,0 +1,11 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.title {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #242424;
+}

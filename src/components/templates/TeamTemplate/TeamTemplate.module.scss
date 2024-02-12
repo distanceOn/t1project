@@ -1,0 +1,18 @@
+.container {
+  position: relative;
+  padding: 6rem 13rem 14rem;
+  background-color: #484283;
+  overflow: hidden;
+}
+
+.decoration {
+  width: 68.6rem;
+  height: 68.6rem;
+  right: -40rem;
+  top: -15rem;
+  & :first-child {
+    z-index: 100;
+    top: -28rem;
+    right: -10rem;
+  }
+}

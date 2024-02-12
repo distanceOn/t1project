@@ -1,0 +1,73 @@
+.btn {
+  font-weight: 400;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  &_default {
+    width: 20.01rem;
+    padding: 2.2rem 4.7rem;
+  }
+  &_reset {
+    width: fit-content;
+  }
+
+  &_apply {
+    width: 23.9rem;
+    padding: 2.2rem 4.8rem;
+    border: 1px solid #fff4ee;
+  }
+
+  &_catalog {
+    width: 17.1rem;
+    padding: 2.2rem 4.7rem;
+  }
+
+  &_steps {
+    border: 1px solid #444b58;
+    width: 14.8rem;
+    height: 5rem;
+    padding: 2.2rem 4.2rem;
+  }
+
+  &_category {
+    height: 5.7rem;
+    border-radius: 0;
+
+    font-weight: 600;
+    border: 1px solid #dbbba9;
+    flex: 1 1 calc(50% - 10px);
+    &:nth-of-type(2n) {
+      border-left: none;
+    }
+    &:nth-of-type(n + 3) {
+      border-top: none;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .btn_category {
+    flex-basis: calc(100% - 10px);
+    &:not(:first-child) {
+      border-top: none;
+    }
+    &:nth-of-type(2n) {
+      border-left: 1px solid #dbbba9;
+    }
+  }
+}
+
+.color {
+  color: #fff;
+  &_primary {
+    background: #f14f4f;
+  }
+  &_transparent {
+    background-color: transparent;
+    color: #444b58;
+  }
+  &_secondary {
+    background: #444b58;
+  }
+}

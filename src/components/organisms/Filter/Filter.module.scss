@@ -1,0 +1,19 @@
+.container {
+  width: 28rem;
+  height: fit-content;
+  padding: 0.9rem 2rem 2rem;
+  border-radius: 4px;
+  border: 1px solid #fff4ee;
+  background: #fff4ee;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  & > button {
+    margin-top: 0.7rem;
+  }
+  & > :last-child {
+    margin-top: 1rem;
+    align-self: center;
+  }
+}

@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+}
+
+.color {
+  &_white {
+    background-color: #fff;
+  }
+  &_purple {
+    background-color: #484283;
+  }
+  &_black {
+    background-color: #444b58;
+  }
+}
+
+.padding {
+  &_min {
+    padding: 1rem 13rem;
+  }
+
+  &_small {
+    padding: 5.4rem 13rem 5.3rem;
+  }
+
+  &_xsmall {
+    padding: 6rem 28rem 9.2rem;
+  }
+
+  &_medium {
+    padding: 10rem 13rem 9.3rem;
+  }
+  &_large {
+    padding: 22.2rem 13.4rem 14.9rem;
+  }
+}

@@ -1,0 +1,47 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #242424;
+  padding-bottom: 2.1rem;
+  & * {
+    cursor: pointer;
+  }
+}
+.question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.1s ease-in-out;
+  /* Убедитесь, что padding включен в список свойств transition */
+
+  &_opened {
+    max-height: 1000px; /* или достаточное значение, чтобы вместить любой ответ */
+    visibility: visible;
+    opacity: 1;
+    padding-bottom: 1.9rem;
+  }
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  fill: #000;
+  transition: all 0.4s ease-out;
+}
+
+.opened {
+  transform: rotate(135deg);
+}
+
+.closed {
+  transform: rotate(0);
+}

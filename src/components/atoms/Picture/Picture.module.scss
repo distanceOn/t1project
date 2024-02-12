@@ -1,0 +1,15 @@
+.picture {
+  border-radius: 4px;
+  width: 28rem;
+  height: 29.3rem;
+  &_small {
+    border-radius: 4px;
+    width: 28rem;
+    height: 12rem;
+  }
+  &_large {
+    width: 38rem;
+    height: 40rem;
+    border-radius: 4px;
+  }
+}

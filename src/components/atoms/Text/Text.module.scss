@@ -1,0 +1,31 @@
+.text {
+  font-weight: 600;
+  font-size: 1.6rem;
+  &_default {
+    font-size: 1.6rem;
+  }
+
+  &_thin {
+    font-size: 2rem;
+    font-weight: 400;
+  }
+
+  &_lineheight {
+    line-height: 2.24rem;
+  }
+}
+
+.color {
+  &_white {
+    color: #fff;
+  }
+  &_grey {
+    color: #444b58;
+  }
+  &_lightgrey {
+    color: #808080;
+  }
+  &_black {
+    color: rgba(36, 36, 36, 0.5);
+  }
+}
