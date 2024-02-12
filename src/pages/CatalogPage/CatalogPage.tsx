@@ -8,6 +8,7 @@ import S from './CatalogPage.module.scss';
 import { AboutTemplate } from '../../components/templates/AboutTemplate/AboutTemplate';
 import { About } from '../../components/organisms/About/About';
 import { ProductSelection } from '../../components/organisms/ProductSelection/ProductSelection';
+import { TeamTemplate } from '../../components/templates/TeamTemplate/TeamTemplate';
 export const CatalogPage = () => {
   return (
     <div className={S.container}>
@@ -32,6 +33,7 @@ export const CatalogPage = () => {
       <GenericTemplate color='white' padding='small'>
         <ProductSelection />
       </GenericTemplate>
+      <TeamTemplate>dasdas</TeamTemplate>
     </div>
   );
 };
