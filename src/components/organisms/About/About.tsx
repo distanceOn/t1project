@@ -8,15 +8,17 @@ export const About = () => {
   return (
     <div className={S.container}>
       <div className={S.about}>
-        <Title type='about'>About us</Title>
-        <Text type='hero'>
+        <Title color='white' size='default'>
+          About us
+        </Title>
+        <Text color='white' size='lineheight'>
           Every day a person has a choice what to spend his money on. Stores and
           websites offer an endless list of products. <br />
           But we will help you make the right choice!
         </Text>
       </div>
       <Quote>
-        <Logo type='small' />
+        <Logo color='white' size='small' />
       </Quote>
     </div>
   );

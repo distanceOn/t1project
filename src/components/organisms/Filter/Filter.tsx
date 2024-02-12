@@ -5,12 +5,16 @@ import S from './Filter.module.scss';
 export const Filter = () => {
   return (
     <div className={S.container}>
-      <Title type='filter'>
+      <Title color='grey' size='small'>
         Selection <br /> by parameters
       </Title>
       <FilterCategories />
-      <Button type='apply'>Apply</Button>
-      <Button type='reset'>Reset</Button>
+      <Button color='secondary' type='apply'>
+        Apply
+      </Button>
+      <Button color='transparent' type='reset'>
+        Reset
+      </Button>
     </div>
   );
 };

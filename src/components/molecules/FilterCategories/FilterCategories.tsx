@@ -14,10 +14,12 @@ export const FilterCategories = () => {
   ];
   return (
     <div className={S.container}>
-      <Title type='min'>Categories</Title>
+      <Title color='grey' size='min'>
+        Categories
+      </Title>
       <div className={S.categories}>
         {categories.map((category, index) => (
-          <Button key={index} type='category'>
+          <Button key={index} color='transparent' type='category'>
             {category}
           </Button>
         ))}

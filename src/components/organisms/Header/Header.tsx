@@ -6,7 +6,7 @@ import S from './Header.module.scss';
 export const Header = () => {
   return (
     <header className={S.header}>
-      <Logo type='default' link />
+      <Logo color='white' size='default' link />
       <div className={S.container}>
         <HeaderMenu />
         <HeaderCart />

@@ -1,18 +1,33 @@
 import S from './Button.module.scss';
+import { BtnColors, BtnStyles, BtnTypes } from './types';
 
-export const getBtnClassName = (type: string) => {
-  switch (type) {
-    case 'category':
-      return S.btn_category;
-    case 'apply':
-      return S.btn_apply;
-    case 'reset':
-      return S.btn_reset;
-    case 'catalog':
-      return S.btn + ' ' + S.btn_catalog;
-    case 'steps':
-      return S.btn_steps;
-    default:
-      return S.btn;
-  }
+const getBtnColor = (color: BtnColors) => {
+  const colors = {
+    primary: S.color_primary,
+    secondary: S.color_secondary,
+    transparent: S.color_transparent,
+  };
+  return `${S.color} ${colors[color]}`;
+};
+
+const getBtnType = (type: BtnTypes) => {
+  const types = {
+    default: S.btn_default,
+    reset: S.btn_reset,
+    apply: S.btn_apply,
+    category: S.btn_category,
+    steps: S.btn_steps,
+    catalog: S.btn_catalog,
+  };
+
+  return `${S.btn} ${types[type]}`;
+};
+
+export const getTotalBtnClassName = ({ color, type }: BtnStyles) => {
+  const colorClass = getBtnColor(color);
+  const sizeClass = getBtnType(type);
+
+  const totalClass = `${colorClass} ${sizeClass}`;
+
+  return totalClass;
 };

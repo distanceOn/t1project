@@ -3,25 +3,23 @@ import { Colors, Paddings, Styles } from './types';
 import S from './GenericTemplate.module.scss';
 
 export const getColorClassName = (color: Colors) => {
-  switch (color) {
-    case 'white':
-      return S.color_white;
-    case 'purple':
-      return S.color_purple;
-  }
+  const colorClassNames = {
+    white: S.color_white,
+    purple: S.color_purple,
+  };
+
+  return colorClassNames[color];
 };
 
-const getPaddingClassName = (padding: Paddings) => {
-  switch (padding) {
-    case 'min':
-      return S.padding_min;
-    case 'small':
-      return S.padding_small;
-    case 'medium':
-      return S.padding_medium;
-    case 'large':
-      return S.padding_large;
-  }
+export const getPaddingClassName = (padding: Paddings) => {
+  const paddingClassNames = {
+    min: S.padding_min,
+    small: S.padding_small,
+    medium: S.padding_medium,
+    large: S.padding_large,
+  };
+
+  return paddingClassNames[padding];
 };
 
 export const getTotalClass = ({ color, padding }: Styles) => {

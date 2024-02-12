@@ -18,7 +18,9 @@ export const CatalogPage = () => {
         <Hero />
       </GenericTemplate>
       <GenericTemplate color='white' padding='small'>
-        <Title type='default'>Catalog</Title>
+        <Title color='grey' size='default'>
+          Catalog
+        </Title>
         <div className={S.catalog}>
           <Filter />
           <Products />

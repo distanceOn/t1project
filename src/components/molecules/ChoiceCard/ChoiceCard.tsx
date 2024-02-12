@@ -9,7 +9,9 @@ export const ChoiceCard = () => {
     <li className={S.card}>
       <Picture size='small' image='choice' />
       <Checkbox>
-        <Text type='checkbox'>sneakers</Text>
+        <Text color='grey' size='default'>
+          sneakers
+        </Text>
       </Checkbox>
     </li>
   );
