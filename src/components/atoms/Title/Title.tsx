@@ -1,22 +1,18 @@
-import { getTitleClassName } from './utils';
+import { TitleProps } from './types';
+import { getTotalTitleClassName } from './utils';
 
-type TitleProps = {
-  children: React.ReactNode;
-  type: 'hero' | 'filter' | 'min' | 'default' | 'about';
-};
+export const Title = ({ children, color, size }: TitleProps) => {
+  const className = getTotalTitleClassName({ color, size });
 
-export const Title = ({ children, type }: TitleProps) => {
-  const className = getTitleClassName(type);
-
-  if (type === 'hero') {
+  if (size === 'large') {
     return <h1 className={className}>{children}</h1>;
   }
 
-  if (type === 'filter' || type === 'about') {
+  if (size === 'small') {
     return <h3 className={className}>{children}</h3>;
   }
 
-  if (type === 'min') {
+  if (size === 'min') {
     return <h4 className={className}>{children}</h4>;
   }
 

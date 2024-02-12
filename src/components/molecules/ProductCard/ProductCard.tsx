@@ -7,7 +7,9 @@ export const ProductCard = () => {
   return (
     <li className={S.card}>
       <Picture size='default' image='shoes' />
-      <Title type='min'>Nike Air Force 1 '07 QS</Title>
+      <Title color='grey' size='min'>
+        Nike Air Force 1 '07 QS
+      </Title>
       <Text color='grey' size='thin'>
         110 ${' '}
       </Text>

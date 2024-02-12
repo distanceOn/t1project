@@ -6,7 +6,7 @@ import S from './HeroContent.module.scss';
 export const HeroContent = () => {
   return (
     <div className={S.container}>
-      <Title type='hero'>
+      <Title color='white' size='large'>
         Any products from famous brands with worldwide delivery
       </Title>
       <Text color='white' size='lineheight'>
