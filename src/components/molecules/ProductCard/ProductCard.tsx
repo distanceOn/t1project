@@ -11,7 +11,7 @@ export const ProductCard = () => {
         Nike Air Force 1 '07 QS
       </Title>
       <Text color='grey' size='thin'>
-        110 ${' '}
+        110 $
       </Text>
     </li>
   );

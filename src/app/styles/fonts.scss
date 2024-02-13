@@ -7,21 +7,14 @@
 
 @font-face {
   font-family: 'Jost';
-  src: url('../assets/fonts/Jost-Bold.ttf') format('truetype');
-  font-weight: 700;
+  src: url('../assets/fonts/Jost-SemiBold.ttf') format('truetype');
+  font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Jost';
-  src: url('../assets/fonts/Jost-Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Jost';
-  src: url('../assets/fonts/Jost-BoldItalic.ttf') format('truetype');
+  src: url('../assets/fonts/Jost-Bold.ttf') format('truetype');
   font-weight: 700;
-  font-style: italic;
+  font-style: normal;
 }

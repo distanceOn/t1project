@@ -6,5 +6,5 @@ type DecorationProps = {
 
 export const Decoration = ({ className }: DecorationProps) => {
   const totalClass = S.decoration + ' ' + className;
-  return <div className={totalClass}></div>;
+  return <div className={totalClass} />;
 };
