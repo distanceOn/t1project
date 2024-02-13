@@ -1,9 +1,15 @@
 .btn {
+  cursor: pointer;
+  outline: none;
   font-weight: 400;
   border-radius: 4px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  & > a {
+    color: #fff;
+    text-decoration: none;
+  }
   &_default {
     width: 20.01rem;
     padding: 2.2rem 4.7rem;
