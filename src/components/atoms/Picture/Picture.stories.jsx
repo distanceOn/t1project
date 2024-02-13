@@ -1,7 +1,7 @@
 import { Picture } from './Picture';
 
 export default {
-  title: 'Components/Picture',
+  title: 'Components/atoms/Picture',
   component: Picture,
 };
 

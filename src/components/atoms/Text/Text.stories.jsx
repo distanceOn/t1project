@@ -1,7 +1,7 @@
 import { Text } from './Text';
 
 export default {
-  title: 'Components/Text',
+  title: 'Components/atoms/Text',
   component: Text,
 };
 
