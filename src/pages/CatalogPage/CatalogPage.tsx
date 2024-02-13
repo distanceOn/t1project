@@ -17,9 +17,11 @@ export const CatalogPage = () => {
       <GenericTemplate color='purple' padding='min'>
         <HeaderFooter type='header' />
       </GenericTemplate>
+
       <GenericTemplate color='purple' padding='medium'>
         <Hero />
       </GenericTemplate>
+
       <GenericTemplate color='white' padding='small'>
         <Title color='grey' size='default'>
           Catalog
@@ -29,18 +31,23 @@ export const CatalogPage = () => {
           <Products />
         </div>
       </GenericTemplate>
+
       <AboutTemplate>
         <About />
       </AboutTemplate>
+
       <GenericTemplate color='white' padding='small'>
         <ProductSelection />
       </GenericTemplate>
+
       <TeamTemplate>
         <Team />
       </TeamTemplate>
+
       <GenericTemplate color='white' padding='xsmall'>
         <Faq />
       </GenericTemplate>
+
       <GenericTemplate color='black' padding='min'>
         <HeaderFooter type='footer' />
       </GenericTemplate>

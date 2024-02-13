@@ -11,6 +11,9 @@ type FaqItemProps = {
 export const FaqItem = ({ question, answer }: FaqItemProps) => {
   const [open, setOpen] = useState(false);
 
+  const iconClassName = `${S.icon} ${open ? S.opened : S.closed}`;
+  const textClassName = `${S.answer} ${open ? S.answer_opened : ''}`;
+
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -20,9 +23,9 @@ export const FaqItem = ({ question, answer }: FaqItemProps) => {
         <Title color='black' size='xmin'>
           {question}
         </Title>
-        <Plus className={`${S.icon} ${open ? S.opened : S.closed}`} />
+        <Plus className={iconClassName} />
       </div>
-      <div className={`${S.answer} ${open ? S.answer_opened : ''}`}>
+      <div className={textClassName}>
         <Text color='black' size='lineheight'>
           {answer}
         </Text>

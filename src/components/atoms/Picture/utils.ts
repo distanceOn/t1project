@@ -9,29 +9,18 @@ import Fedor from './images/team_fedor.jpg';
 import Masha from './images/team_masha.jpg';
 import Maxim from './images/team_maxim.jpg';
 import Sasha from './images/team_sasha.jpg';
+import { PictureImage, PictureType } from './types';
 
-export const getPictureClassName = (type: string) => {
-  switch (type) {
-    case 'small':
-      return S.picture_small;
-    case 'large':
-      return S.picture_large;
-    default:
-      return S.picture;
-  }
+export const getPictureClassName = (type: PictureType) => {
+  const types = {
+    small: S.picture_small,
+    large: S.picture_large,
+    default: S.picture,
+  };
+  return types[type];
 };
 
-export const getSrcAndAlt = (
-  image:
-    | 'shoes'
-    | 'choice'
-    | 'andre'
-    | 'anna'
-    | 'fedor'
-    | 'masha'
-    | 'maxim'
-    | 'sasha'
-) => {
+export const getSrcAndAlt = (image: PictureImage) => {
   const srcAndAlt = {
     shoes: {
       src: Shoes,

@@ -1,13 +1,9 @@
 import { Decoration } from '../../atoms/Decoration/Decoration';
 import { BgEllipse } from '../../atoms/icons/BgEllipse';
 import S from './EllipseDecoration.module.scss';
+import { EllipseDecorationProps } from './types';
 import { getDecorationClassName } from './utils';
 
-type EllipseDecorationProps = {
-  className: string;
-  size: 'small' | 'large';
-  ellipse?: 'large';
-};
 export const EllipseDecoration = ({
   className,
   size,
@@ -24,11 +20,11 @@ export const EllipseDecoration = ({
     );
   }
 
-  if (ellipse === 'large' && size === 'large') {
+  if (size === 'large') {
     return (
       <div className={S.container + ' ' + className}>
         <Decoration className={decorationClassName} />
-        <BgEllipse className={S.ellipse_large} />
+        {ellipse === 'large' && <BgEllipse className={S.ellipse_large} />}
       </div>
     );
   }
