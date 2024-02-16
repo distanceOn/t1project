@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { HeaderFooterLink } from '../../atoms/HeaderFooterLink/HeaderFooterLink';
 import S from './HeaderFooterMenu.module.scss';
+import useIsStaffPage from '../../../hooks/useIsStaffPage';
 
 const items = [
   {
@@ -30,10 +31,7 @@ const items = [
 ];
 
 export const HeaderFooterMenu = () => {
-  const { pathname } = useLocation();
-  const staffPathname = '/staff';
-
-  const isStaffPage = pathname === staffPathname;
+  const isStaffPage = useIsStaffPage();
 
   const baseContent = items.map(({ name, link }, index) => (
     <li key={index}>
