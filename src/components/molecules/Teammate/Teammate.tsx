@@ -8,7 +8,7 @@ export const Teammate = ({ image }: TeammateProps) => {
   const { name, position } = getInfoByImage(image);
   return (
     <div className={S.container}>
-      <Picture size='large' image={image} />
+      <Picture size='xlarge' image={image} />
       <div className={S.info}>
         <Title color='white' size='small'>
           {name}

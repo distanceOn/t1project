@@ -1,4 +1,4 @@
-export type PictureType = 'small' | 'default' | 'large';
+export type PictureType = 'small' | 'default' | 'large' | 'xlarge';
 export type PictureImage =
   | 'shoes'
   | 'choice'

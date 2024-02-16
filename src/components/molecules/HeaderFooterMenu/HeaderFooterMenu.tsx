@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router-dom';
 import { HeaderFooterLink } from '../../atoms/HeaderFooterLink/HeaderFooterLink';
 import S from './HeaderFooterMenu.module.scss';
 import useIsStaffPage from '../../../hooks/useIsStaffPage';
