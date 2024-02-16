@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ButtonProps } from './types';
 import { getTotalBtnClassName } from './utils';
 
@@ -7,7 +8,7 @@ export const Button = ({ color, type, children, href }: ButtonProps) => {
   if (href) {
     return (
       <button className={className}>
-        <a href={href}>{children}</a>
+        <Link to={href}>{children}</Link>
       </button>
     );
   }
