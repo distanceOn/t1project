@@ -1,0 +1,9 @@
+.container {
+  width: 100%;
+  display: flex;
+  gap: 1.9rem;
+  & > button {
+    height: 100%;
+    border: none;
+  }
+}

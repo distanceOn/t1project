@@ -2,6 +2,7 @@ import useIsStaffPage from '../../../hooks/useIsStaffPage';
 import { Button } from '../../atoms/Button/Button';
 import { Title } from '../../atoms/Title/Title';
 import { ProductCard } from '../../molecules/ProductCard/ProductCard';
+import { Search } from '../../molecules/Search/Search';
 import S from './Products.module.scss';
 
 export const Products = () => {
@@ -15,9 +16,12 @@ export const Products = () => {
   return (
     <div className={containerStyle}>
       {isStaffPage && (
-        <Title color='grey' size='default'>
-          All products
-        </Title>
+        <>
+          <Title color='grey' size='default'>
+            All products
+          </Title>
+          <Search />
+        </>
       )}
       <ul className={S.products}>
         {cards.map((_, index) => (
