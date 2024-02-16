@@ -4,6 +4,12 @@
   align-items: center;
   & > button {
     margin-top: 3.1rem;
+    align-self: center;
+  }
+  &_staff {
+    align-items: normal;
+    width: 100%;
+    gap: 5rem;
   }
 }
 

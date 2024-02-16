@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import S from './HeaderFooterLink.module.scss';
 
 type HeaderLinkProps = {
@@ -7,8 +8,8 @@ type HeaderLinkProps = {
 
 export const HeaderFooterLink = ({ href, children }: HeaderLinkProps) => {
   return (
-    <a className={S.link} href={href}>
+    <Link className={S.link} to={href}>
       {children}
-    </a>
+    </Link>
   );
 };

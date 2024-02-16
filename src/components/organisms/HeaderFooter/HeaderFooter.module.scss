@@ -3,6 +3,9 @@
   padding: 0.9rem 0;
   display: flex;
   justify-content: space-between;
+  &_staff {
+    border-bottom: none;
+  }
 }
 
 .footer {

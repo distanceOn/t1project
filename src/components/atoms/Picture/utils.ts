@@ -15,6 +15,7 @@ export const getPictureClassName = (type: PictureType) => {
   const types = {
     small: S.picture_small,
     large: S.picture_large,
+    xlarge: S.picture_xlarge,
     default: S.picture,
   };
   return types[type];
