@@ -2,9 +2,10 @@ import { useLocation } from 'react-router-dom';
 
 const useIsStaffPage = () => {
   const { pathname } = useLocation();
-  const staffPathname = '/staff';
+  const staffPathPrefix = '/staff';
 
-  return pathname === staffPathname;
+  // Проверка, начинается ли текущий путь с /staff
+  return pathname.startsWith(staffPathPrefix);
 };
 
 export default useIsStaffPage;
