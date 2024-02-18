@@ -41,7 +41,6 @@ export const Gallery = () => {
       showFullscreenButton={false}
       showPlayButton={false}
       showNav={false}
-      thumbnailPosition='bottom'
     />
   );
 };

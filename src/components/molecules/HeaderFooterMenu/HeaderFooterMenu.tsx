@@ -15,7 +15,10 @@ export const HeaderFooterMenu = ({ type }: HeaderFooterType) => {
 
   const baseContent = items.map(({ name, link }, index) => (
     <li key={index}>
-      <HeaderFooterLink href={link} onClick={handleLinkClick}>
+      <HeaderFooterLink
+        href={link}
+        onClick={link.includes('#') ? handleLinkClick : undefined}
+      >
         {name}
       </HeaderFooterLink>
     </li>
