@@ -1,40 +1,26 @@
 import { HeaderFooterLink } from '../../atoms/HeaderFooterLink/HeaderFooterLink';
 import S from './HeaderFooterMenu.module.scss';
 import useIsStaffPage from '../../../hooks/useIsStaffPage';
+import { useCallback } from 'react';
+import { toAnchor } from './utils';
+import { HeaderFooterType } from '../../../utils/types';
+import { footerItems, headerItems } from './constants';
 
-const items = [
-  {
-    name: 'Catalog',
-    link: '#',
-  },
-  {
-    name: 'About us',
-    link: '#',
-  },
-  {
-    name: 'Product selection',
-    link: '#',
-  },
-  {
-    name: 'Our team',
-    link: '#',
-  },
-  {
-    name: 'FAQ',
-    link: '#',
-  },
-  {
-    name: 'For staff',
-    link: '/staff',
-  },
-];
+export const HeaderFooterMenu = ({ type }: HeaderFooterType) => {
+  const items = type === 'header' ? headerItems : footerItems;
 
-export const HeaderFooterMenu = () => {
   const isStaffPage = useIsStaffPage();
+
+  const handleLinkClick = useCallback(toAnchor, []);
 
   const baseContent = items.map(({ name, link }, index) => (
     <li key={index}>
-      <HeaderFooterLink href={link}>{name}</HeaderFooterLink>
+      <HeaderFooterLink
+        href={link}
+        onClick={link.includes('#') ? handleLinkClick : undefined}
+      >
+        {name}
+      </HeaderFooterLink>
     </li>
   ));
 

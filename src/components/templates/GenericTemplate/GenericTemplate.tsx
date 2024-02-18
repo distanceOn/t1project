@@ -5,9 +5,14 @@ export const GenericTemplate = ({
   children,
   color,
   padding,
+  id,
 }: GenericTemplateProps) => {
   const styles = { color, padding };
   const totalClass = getTotalClass(styles);
 
-  return <section className={totalClass}>{children}</section>;
+  return (
+    <section id={id} className={totalClass}>
+      {children}
+    </section>
+  );
 };

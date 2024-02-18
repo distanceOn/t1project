@@ -5,7 +5,7 @@ type TeamTemplateProps = {
 };
 export const TeamTemplate = ({ children }: TeamTemplateProps) => {
   return (
-    <section className={S.container}>
+    <section id='team' className={S.container}>
       <EllipseDecoration
         size='large'
         ellipse='large'

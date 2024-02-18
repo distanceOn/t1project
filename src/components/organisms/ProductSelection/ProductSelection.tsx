@@ -21,7 +21,7 @@ export const ProductSelection = () => {
           What type of product are you considering?
         </Title>
         <div className={S.list}>
-          {Array.from({ length: 6 }).map((_, index) => (
+          {Array.from({ length: 22 }).map((_, index) => (
             <ChoiceCard key={index} />
           ))}
         </div>
