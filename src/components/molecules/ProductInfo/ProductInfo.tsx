@@ -1,3 +1,4 @@
+import Rating from '../../atoms/Rating/Rating';
 import { Text } from '../../atoms/Text/Text';
 import { Title } from '../../atoms/Title/Title';
 import S from './ProductInfo.module.scss';
@@ -23,6 +24,7 @@ export const ProductInfo = () => {
           <Text size='default' color='lightgrey'>
             Raiting
           </Text>
+          <Rating value={3} />
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>

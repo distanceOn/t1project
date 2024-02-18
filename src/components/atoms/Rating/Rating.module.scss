@@ -1,0 +1,24 @@
+/* Rating.module.scss */
+
+.rating {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.full,
+.empty {
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.full {
+  color: #f14f4f; /* Цвет для заполненной звезды */
+}
+
+.empty {
+  color: #cccccc; /* Цвет для пустой звезды */
+}
