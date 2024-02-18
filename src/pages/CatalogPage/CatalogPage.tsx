@@ -22,7 +22,7 @@ export const CatalogPage = () => {
         <Hero />
       </GenericTemplate>
 
-      <GenericTemplate color='white' padding='small'>
+      <GenericTemplate id='catalog' color='white' padding='small'>
         <Title color='grey' size='default'>
           Catalog
         </Title>
@@ -36,7 +36,7 @@ export const CatalogPage = () => {
         <About />
       </AboutTemplate>
 
-      <GenericTemplate color='white' padding='small'>
+      <GenericTemplate id='selection' color='white' padding='small'>
         <ProductSelection />
       </GenericTemplate>
 
@@ -44,7 +44,7 @@ export const CatalogPage = () => {
         <Team />
       </TeamTemplate>
 
-      <GenericTemplate color='white' padding='xsmall'>
+      <GenericTemplate id='faq' color='white' padding='xsmall'>
         <Faq />
       </GenericTemplate>
 
