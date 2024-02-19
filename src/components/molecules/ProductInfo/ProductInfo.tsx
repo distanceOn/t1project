@@ -2,36 +2,50 @@ import Rating from '../../atoms/Rating/Rating';
 import { Text } from '../../atoms/Text/Text';
 import { Title } from '../../atoms/Title/Title';
 import S from './ProductInfo.module.scss';
+import { useSingleProduct } from '../../../hooks/useSingleProduct';
 
 export const ProductInfo = () => {
+  const {
+    category,
+    description,
+    brand,
+    stock,
+    discountPercentage,
+    price,
+    rating,
+    title,
+    sku,
+    discount,
+  } = useSingleProduct();
+
   return (
     <div className={S.container}>
       <div className={S.title}>
         <Title size='small' color='grey'>
-          Puma Force 1 Shadow
+          {title}
         </Title>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             SKU ID
           </Text>
           <Text size='default' color='grey'>
-            0005
+            {sku}
           </Text>
         </div>
       </div>
       <div className={S.info}>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
-            Raiting
+            Rating
           </Text>
-          <Rating value={3} />
+          <Rating value={rating} />
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Base price
           </Text>
           <Text size='default' color='grey'>
-            500$
+            {price}$
           </Text>
         </div>
         <div className={S.item}>
@@ -39,7 +53,7 @@ export const ProductInfo = () => {
             Discount percentage
           </Text>
           <Text size='default' color='grey'>
-            10%
+            {discountPercentage}%
           </Text>
         </div>
         <div className={S.item}>
@@ -47,7 +61,7 @@ export const ProductInfo = () => {
             Discount price
           </Text>
           <Text size='default' color='grey'>
-            450$
+            {discount}$
           </Text>
         </div>
         <div className={S.item}>
@@ -55,7 +69,7 @@ export const ProductInfo = () => {
             Stock
           </Text>
           <Text size='default' color='grey'>
-            13
+            {stock}
           </Text>
         </div>
         <div className={S.item}>
@@ -63,7 +77,7 @@ export const ProductInfo = () => {
             Brand
           </Text>
           <Text size='default' color='grey'>
-            Puma
+            {brand}
           </Text>
         </div>
         <div className={S.item}>
@@ -71,7 +85,7 @@ export const ProductInfo = () => {
             Category
           </Text>
           <Text size='default' color='grey'>
-            Smartphones
+            {category}
           </Text>
         </div>
         <div className={S.item}>
@@ -79,7 +93,7 @@ export const ProductInfo = () => {
             Description
           </Text>
           <Text size='default' color='grey'>
-            An apple mobile which is nothing like apple
+            {description}
           </Text>
         </div>
       </div>
