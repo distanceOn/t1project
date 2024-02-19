@@ -27,6 +27,7 @@ export const useSingleProduct = () => {
     price,
     rating,
     title,
+    images,
   } = data || {};
 
   const discount =
@@ -47,5 +48,6 @@ export const useSingleProduct = () => {
     id,
     sku,
     discount,
+    images,
   };
 };
