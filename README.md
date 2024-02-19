@@ -30,20 +30,13 @@ cd t1project
 ### Установка зависимостей
 
 ```bash
-npm install
-
-# или
-# pnpm i
-# yarn
+pnpm i
 ```
 
 ### Запуск проекта
 
 ```bash
-npm start
-# или
-# pnpm start
-# yarn start
+pnpm start
 ```
 
 После запуска проект будет доступен на localhost:3000.
@@ -53,10 +46,7 @@ npm start
 ### Для просмотра и тестирования компонентов в Storybook:
 
 ```bash
-npm run storybook
-# или
 # pnpm storybook
-# yarn storybook
 ```
 
 Storybook будет доступен на localhost:6006.
