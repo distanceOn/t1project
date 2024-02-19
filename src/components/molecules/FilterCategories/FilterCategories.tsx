@@ -3,14 +3,14 @@ import { Title } from '../../atoms/Title/Title';
 import S from './FilterCategories.module.scss';
 import { useCategories } from '../../../hooks/useCategories';
 import { useProducts } from '../../../hooks/useProducts';
+import { setSelectedCategory } from '../../../app/reducers/ProductsSlice';
+import { useAppDispatch } from '../../../hooks/reduxHooks';
 export const FilterCategories = () => {
+  const dispatch = useAppDispatch();
+
   const { categories, isLoading } = useCategories();
 
-  const { setCategory } = useProducts();
-
-  const handleClick = (category: string) => {
-    setCategory(category);
-  };
+  const { selectedCategory } = useProducts();
 
   return (
     <div className={S.container}>
@@ -22,9 +22,9 @@ export const FilterCategories = () => {
         {categories.map((category, index) => {
           return (
             <Button
-              onClick={() => handleClick(category)}
+              onClick={() => dispatch(setSelectedCategory(category))}
               key={index}
-              color='transparent'
+              color={category === selectedCategory ? 'primary' : 'transparent'}
               type='category'
             >
               {category}

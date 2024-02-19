@@ -1,24 +1,36 @@
 import { useEffect, useState } from 'react';
 import { useGetProductsByCategoryQuery } from '../app/api/productsApi';
 import { useAppDispatch, useAppSelector } from './reduxHooks';
-import { setCategoryProducts } from '../app/reducers/ProductsSlice';
+import {
+  setCategoryProducts,
+  setSelectedCategory,
+} from '../app/reducers/ProductsSlice';
 
 export const useProducts = () => {
   const dispatch = useAppDispatch();
 
-  const [category, setCategory] = useState('smartphones');
+  const selectedCategory = useAppSelector(
+    state => state.products.selectedCategory
+  );
+
+  const [goQueryCategory, setGoQueryCategory] = useState('smartphones');
+
+  const resetCategory = () => {
+    dispatch(setSelectedCategory('smartphones'));
+    setGoQueryCategory('smartphones');
+  };
 
   const {
     data: productsData,
     isLoading,
     isSuccess,
     refetch,
-  } = useGetProductsByCategoryQuery(category);
+  } = useGetProductsByCategoryQuery(goQueryCategory);
 
   useEffect(() => {
     refetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [category]);
+  }, [goQueryCategory]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -31,5 +43,11 @@ export const useProducts = () => {
     state => state.products.categoryProducts
   );
 
-  return { categoryProducts, isLoading, setCategory };
+  return {
+    categoryProducts,
+    isLoading,
+    selectedCategory,
+    setGoQueryCategory,
+    resetCategory,
+  };
 };
