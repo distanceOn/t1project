@@ -12,4 +12,8 @@ export type PictureImage =
 export type PictureProps = {
   size: PictureType;
   image: PictureImage;
+  serverSource?: {
+    src: string | undefined;
+    alt: string;
+  };
 };
