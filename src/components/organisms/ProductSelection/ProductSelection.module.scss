@@ -28,6 +28,10 @@
   grid-gap: 2.8rem 7rem;
 }
 
+.loading {
+  color: black;
+}
+
 @media (max-width: 768px) {
   .list {
     grid-template-columns: repeat(2, 1fr);

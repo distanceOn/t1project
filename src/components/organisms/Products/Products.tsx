@@ -1,16 +1,27 @@
 import { useNavigate } from 'react-router-dom';
 import useIsStaffPage from '../../../hooks/useIsStaffPage';
-import { cards } from '../../../utils/constants';
 import { Button } from '../../atoms/Button/Button';
 import { Title } from '../../atoms/Title/Title';
 import { ProductCard } from '../../molecules/ProductCard/ProductCard';
 import { Search } from '../../molecules/Search/Search';
 import S from './Products.module.scss';
+import { useEffect, useState } from 'react';
+import { useProducts } from '../../../hooks/useProducts';
 
 export const Products = () => {
+  const navigate = useNavigate();
+
   const isStaffPage = useIsStaffPage();
 
-  const navigate = useNavigate();
+  const [showBtn, setShowBtn] = useState(false);
+
+  const { products, isLoading, total, showedProducts, showMoreProducts } =
+    useProducts();
+
+  useEffect(() => {
+    setShowBtn(showedProducts < total);
+  }, [showedProducts, total]);
+
   const navigateToProduct = (id: number) => {
     if (isStaffPage) {
       navigate(`/staff/${id}`);
@@ -31,13 +42,25 @@ export const Products = () => {
         </>
       )}
       <ul className={S.products}>
-        {cards.map(({ id }) => (
-          <ProductCard onClick={navigateToProduct} id={id} key={id} />
-        ))}
+        {isLoading && <div className={S.loading}>loading...</div>}
+        {products
+          .slice(0, showedProducts)
+          .map(({ id, title, price, images }: any) => (
+            <ProductCard
+              title={title}
+              image={images[0]}
+              price={price}
+              onClick={navigateToProduct}
+              id={id}
+              key={title}
+            />
+          ))}
       </ul>
-      <Button color='primary' href='#' type='catalog'>
-        Show more
-      </Button>
+      {showBtn && (
+        <Button color='primary' onClick={showMoreProducts} type='catalog'>
+          Show more
+        </Button>
+      )}
     </div>
   );
 };

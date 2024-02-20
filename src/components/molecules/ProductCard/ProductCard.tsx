@@ -7,8 +7,17 @@ import S from './ProductCard.module.scss';
 type ProductCardProps = {
   id: number;
   onClick?: (id: number) => void;
+  title: string;
+  price: number;
+  image?: string;
 };
-export const ProductCard = ({ id, onClick }: ProductCardProps) => {
+export const ProductCard = ({
+  id,
+  onClick,
+  title,
+  price,
+  image,
+}: ProductCardProps) => {
   const handleClick = () => {
     if (onClick) {
       onClick(id);
@@ -21,12 +30,16 @@ export const ProductCard = ({ id, onClick }: ProductCardProps) => {
 
   return (
     <li onClick={handleClick} className={S.card}>
-      <Picture size={pictureSize} image='shoes' />
+      <Picture
+        size={pictureSize}
+        image='shoes'
+        serverSource={{ src: image, alt: title }}
+      />
       <Title color='grey' size='min'>
-        Nike Air Force 1 '07 QS
+        {title}
       </Title>
       <Text color='grey' size='thin'>
-        110 $
+        {price} $
       </Text>
     </li>
   );
