@@ -4,6 +4,8 @@ const initialState = {
   categories: [],
   categoryProducts: [],
   selectedCategory: 'smartphones',
+  total: 0,
+  showedProducts: 2,
 };
 
 export const productsSlice = createSlice({
@@ -25,10 +27,25 @@ export const productsSlice = createSlice({
         state.selectedCategory = action.payload;
       }
     },
+    setTotal: (state, action) => {
+      if (action.payload) {
+        state.total = action.payload;
+      }
+    },
+    setShowedProducts: (state, action) => {
+      if (action.payload) {
+        state.showedProducts = action.payload;
+      }
+    },
   },
 });
 
-export const { setCategories, setCategoryProducts, setSelectedCategory } =
-  productsSlice.actions;
+export const {
+  setCategories,
+  setCategoryProducts,
+  setSelectedCategory,
+  setTotal,
+  setShowedProducts,
+} = productsSlice.actions;
 
 export const productsReducer = productsSlice.reducer;

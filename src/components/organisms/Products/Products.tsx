@@ -6,21 +6,27 @@ import { ProductCard } from '../../molecules/ProductCard/ProductCard';
 import { Search } from '../../molecules/Search/Search';
 import S from './Products.module.scss';
 import { useProducts } from '../../../hooks/useProducts';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Products = () => {
-  const { categoryProducts, isLoading } = useProducts();
-
-  useEffect(() => {
-    if (categoryProducts.length === 0) {
-      return;
-    }
-    console.log(categoryProducts);
-  }, [categoryProducts]);
+  const navigate = useNavigate();
 
   const isStaffPage = useIsStaffPage();
 
-  const navigate = useNavigate();
+  const {
+    categoryProducts,
+    isLoading,
+    total,
+    showedProducts,
+    showMoreProducts,
+  } = useProducts();
+
+  const [showBtn, setShowBtn] = useState(false);
+
+  useEffect(() => {
+    setShowBtn(showedProducts < total);
+  }, [showedProducts, total]);
+
   const navigateToProduct = (id: number) => {
     if (isStaffPage) {
       navigate(`/staff/${id}`);
@@ -42,20 +48,24 @@ export const Products = () => {
       )}
       <ul className={S.products}>
         {isLoading && <div className={S.loading}>loading...</div>}
-        {categoryProducts.map(({ id, title, price, images }) => (
-          <ProductCard
-            title={title}
-            image={images[0]}
-            price={price}
-            onClick={navigateToProduct}
-            id={id}
-            key={id}
-          />
-        ))}
+        {categoryProducts
+          .slice(0, showedProducts)
+          .map(({ id, title, price, images }) => (
+            <ProductCard
+              title={title}
+              image={images[0]}
+              price={price}
+              onClick={navigateToProduct}
+              id={id}
+              key={id}
+            />
+          ))}
       </ul>
-      <Button color='primary' href='#' type='catalog'>
-        Show more
-      </Button>
+      {showBtn && (
+        <Button color='primary' onClick={showMoreProducts} type='catalog'>
+          Show more
+        </Button>
+      )}
     </div>
   );
 };

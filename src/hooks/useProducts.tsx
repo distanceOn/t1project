@@ -4,21 +4,16 @@ import { useAppDispatch, useAppSelector } from './reduxHooks';
 import {
   setCategoryProducts,
   setSelectedCategory,
+  setShowedProducts,
+  setTotal,
 } from '../app/reducers/ProductsSlice';
 
 export const useProducts = () => {
   const dispatch = useAppDispatch();
 
-  const selectedCategory = useAppSelector(
-    state => state.products.selectedCategory
-  );
-
   const [goQueryCategory, setGoQueryCategory] = useState('smartphones');
 
-  const resetCategory = () => {
-    dispatch(setSelectedCategory('smartphones'));
-    setGoQueryCategory('smartphones');
-  };
+  const customLimit = 1;
 
   const {
     data: productsData,
@@ -34,20 +29,34 @@ export const useProducts = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setCategoryProducts(productsData.products));
+      const { products, total } = productsData;
+      dispatch(setCategoryProducts(products));
+      dispatch(setTotal(total));
+      dispatch(setShowedProducts(customLimit));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productsData]);
 
-  const categoryProducts = useAppSelector(
-    state => state.products.categoryProducts
-  );
+  const { categoryProducts, total, showedProducts, selectedCategory } =
+    useAppSelector(state => state.products);
+
+  const resetCategory = () => {
+    dispatch(setSelectedCategory('smartphones'));
+    setGoQueryCategory('smartphones');
+  };
+
+  const showMoreProducts = () => {
+    dispatch(setShowedProducts(showedProducts + customLimit));
+  };
 
   return {
     categoryProducts,
+    total,
     isLoading,
     selectedCategory,
     setGoQueryCategory,
     resetCategory,
+    showedProducts,
+    showMoreProducts,
   };
 };
