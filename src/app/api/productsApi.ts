@@ -14,6 +14,22 @@ export const productsApi = baseApi.injectEndpoints({
         method: 'GET',
       }),
     }),
+    getAllProducts: build.query({
+      query: ({ limit, skip }: { limit?: number; skip?: number }) => {
+        let url = '/products';
+        if (limit !== undefined) {
+          url += `?limit=${limit}`;
+        }
+        if (skip !== undefined) {
+          url += limit !== undefined ? `&skip=${skip}` : `?skip=${skip}`;
+        }
+
+        return {
+          url,
+          method: 'GET',
+        };
+      },
+    }),
     getSingleProduct: build.query({
       query: (id: string | undefined) => ({
         url: `/products/${id}`,
@@ -27,4 +43,5 @@ export const {
   useGetCategoriesQuery,
   useGetProductsByCategoryQuery,
   useGetSingleProductQuery,
+  useGetAllProductsQuery,
 } = productsApi;

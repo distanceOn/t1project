@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useGetCategoriesQuery } from '../app/api/productsApi';
 import { useAppDispatch, useAppSelector } from './reduxHooks';
-import { setCategories } from '../app/reducers/ProductsSlice';
+import { setCategories } from '../app/reducers/ProductsCategorySlice';
 
 export const useCategories = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +18,7 @@ export const useCategories = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoriesData]);
 
-  const categories = useAppSelector(state => state.products.categories);
+  const categories = useAppSelector(state => state.productsCategory.categories);
 
   return { categories, isLoading };
 };

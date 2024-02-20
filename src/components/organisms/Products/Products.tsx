@@ -5,8 +5,9 @@ import { Title } from '../../atoms/Title/Title';
 import { ProductCard } from '../../molecules/ProductCard/ProductCard';
 import { Search } from '../../molecules/Search/Search';
 import S from './Products.module.scss';
-import { useProducts } from '../../../hooks/useProducts';
+import { useCategoryProducts } from '../../../hooks/useCategoryProducts';
 import { useEffect, useState } from 'react';
+import { useProducts } from '../../../hooks/useProducts';
 
 export const Products = () => {
   const navigate = useNavigate();
@@ -19,9 +20,15 @@ export const Products = () => {
     total,
     showedProducts,
     showMoreProducts,
-  } = useProducts();
+  } = useCategoryProducts();
 
   const [showBtn, setShowBtn] = useState(false);
+
+  const { products } = useProducts();
+
+  useEffect(() => {
+    console.log(products);
+  }, [products]);
 
   useEffect(() => {
     setShowBtn(showedProducts < total);

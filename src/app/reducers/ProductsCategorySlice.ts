@@ -8,8 +8,8 @@ const initialState = {
   showedProducts: 2,
 };
 
-export const productsSlice = createSlice({
-  name: 'products',
+export const productsCategorySlice = createSlice({
+  name: 'productsCategory',
   initialState,
   reducers: {
     setCategories: (state, action) => {
@@ -46,6 +46,6 @@ export const {
   setSelectedCategory,
   setTotal,
   setShowedProducts,
-} = productsSlice.actions;
+} = productsCategorySlice.actions;
 
-export const productsReducer = productsSlice.reducer;
+export const productsCategoryReducer = productsCategorySlice.reducer;

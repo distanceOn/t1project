@@ -1,10 +1,11 @@
-import { useProducts } from '../../../hooks/useProducts';
+import { useCategoryProducts } from '../../../hooks/useCategoryProducts';
 import { Button } from '../../atoms/Button/Button';
 import { Title } from '../../atoms/Title/Title';
 import { FilterCategories } from '../../molecules/FilterCategories/FilterCategories';
 import S from './Filter.module.scss';
 export const Filter = () => {
-  const { selectedCategory, setGoQueryCategory, resetCategory } = useProducts();
+  const { selectedCategory, setGoQueryCategory, resetCategory } =
+    useCategoryProducts();
 
   const handleGetProducts = () => {
     setGoQueryCategory(selectedCategory);

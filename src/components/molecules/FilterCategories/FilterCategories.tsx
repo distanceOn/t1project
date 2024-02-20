@@ -2,15 +2,15 @@ import { Button } from '../../atoms/Button/Button';
 import { Title } from '../../atoms/Title/Title';
 import S from './FilterCategories.module.scss';
 import { useCategories } from '../../../hooks/useCategories';
-import { useProducts } from '../../../hooks/useProducts';
-import { setSelectedCategory } from '../../../app/reducers/ProductsSlice';
+import { useCategoryProducts } from '../../../hooks/useCategoryProducts';
+import { setSelectedCategory } from '../../../app/reducers/ProductsCategorySlice';
 import { useAppDispatch } from '../../../hooks/reduxHooks';
 export const FilterCategories = () => {
   const dispatch = useAppDispatch();
 
   const { categories, isLoading } = useCategories();
 
-  const { selectedCategory } = useProducts();
+  const { selectedCategory } = useCategoryProducts();
 
   return (
     <div className={S.container}>
