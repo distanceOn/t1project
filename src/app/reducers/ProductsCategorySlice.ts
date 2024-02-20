@@ -5,7 +5,7 @@ const initialState = {
   categoryProducts: [],
   selectedCategory: 'smartphones',
   total: 0,
-  showedProducts: 2,
+  showedProducts: 9,
 };
 
 export const productsCategorySlice = createSlice({

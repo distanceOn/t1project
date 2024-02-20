@@ -5,7 +5,6 @@ import { Title } from '../../atoms/Title/Title';
 import { ProductCard } from '../../molecules/ProductCard/ProductCard';
 import { Search } from '../../molecules/Search/Search';
 import S from './Products.module.scss';
-import { useCategoryProducts } from '../../../hooks/useCategoryProducts';
 import { useEffect, useState } from 'react';
 import { useProducts } from '../../../hooks/useProducts';
 
@@ -14,21 +13,10 @@ export const Products = () => {
 
   const isStaffPage = useIsStaffPage();
 
-  const {
-    categoryProducts,
-    isLoading,
-    total,
-    showedProducts,
-    showMoreProducts,
-  } = useCategoryProducts();
-
   const [showBtn, setShowBtn] = useState(false);
 
-  const { products } = useProducts();
-
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
+  const { products, isLoading, total, showedProducts, showMoreProducts } =
+    useProducts();
 
   useEffect(() => {
     setShowBtn(showedProducts < total);
@@ -55,16 +43,16 @@ export const Products = () => {
       )}
       <ul className={S.products}>
         {isLoading && <div className={S.loading}>loading...</div>}
-        {categoryProducts
+        {products
           .slice(0, showedProducts)
-          .map(({ id, title, price, images }) => (
+          .map(({ id, title, price, images }: any) => (
             <ProductCard
               title={title}
               image={images[0]}
               price={price}
               onClick={navigateToProduct}
               id={id}
-              key={id}
+              key={title}
             />
           ))}
       </ul>
