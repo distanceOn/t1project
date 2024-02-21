@@ -1,15 +1,10 @@
-import { useCategoryProducts } from '../../../hooks/useCategoryProducts';
+import { useCategories } from '../../../hooks/useCategories';
 import { Button } from '../../atoms/Button/Button';
 import { Title } from '../../atoms/Title/Title';
 import { FilterCategories } from '../../molecules/FilterCategories/FilterCategories';
 import S from './Filter.module.scss';
 export const Filter = () => {
-  const { selectedCategory, setGoQueryCategory, resetCategory } =
-    useCategoryProducts();
-
-  const handleGetProducts = () => {
-    setGoQueryCategory(selectedCategory);
-  };
+  const { setCategory, resetCategory } = useCategories();
 
   return (
     <div className={S.container}>
@@ -17,10 +12,10 @@ export const Filter = () => {
         Selection <br /> by parameters
       </Title>
       <FilterCategories />
-      <Button onClick={handleGetProducts} color='secondary' type='apply'>
+      <Button color='secondary' type='apply' onClick={setCategory}>
         Apply
       </Button>
-      <Button onClick={resetCategory} color='transparent' type='reset'>
+      <Button color='transparent' type='reset' onClick={resetCategory}>
         Reset
       </Button>
     </div>

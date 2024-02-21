@@ -1,50 +1,61 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { useCategoryProducts } from './useCategoryProducts';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from 'react';
+import { useGetProductsQuery } from '../app/api/productsApi';
+import { useAppDispatch, useAppSelector } from './reduxHooks';
+import { setData, setSkip } from '../app/reducers/ProductsSlice';
 import useIsStaffPage from './useIsStaffPage';
-import { useStaffProducts } from './useStaffProducts';
 
 export const useProducts = () => {
+  const dispatch = useAppDispatch();
   const isStaffPage = useIsStaffPage();
 
-  let productsData: any = {
-    products: [],
-    isLoading: false,
-    total: 0,
-    showedProducts: 9,
-    showMoreProducts: () => {},
+  const { products, total, skip, selectedCategoryQuery } = useAppSelector(
+    state => state.products
+  );
+
+  const limit = 2;
+
+  const initialQuery = isStaffPage
+    ? {
+        limit,
+        skip,
+      }
+    : { category: selectedCategoryQuery, limit, skip };
+
+  const [query, setQuery] = useState(initialQuery);
+
+  useEffect(() => {
+    if (!isStaffPage) {
+      setQuery({ category: selectedCategoryQuery, limit, skip });
+    }
+  }, [selectedCategoryQuery, skip, dispatch]);
+
+  const {
+    data: productsData,
+    isLoading,
+    isSuccess,
+  } = useGetProductsQuery(query);
+
+  useEffect(() => {
+    console.log(query);
+  }, [query]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(setData(productsData));
+    }
+  }, [isLoading, productsData]);
+
+  const showMore = () => {
+    dispatch(setSkip(skip + limit));
   };
 
-  if (isStaffPage) {
-    const {
-      staffProducts,
-      isLoading,
-      total,
-      showedProducts,
-      showMoreProducts,
-    } = useStaffProducts();
-    productsData = {
-      products: staffProducts,
-      isLoading,
-      total,
-      showedProducts,
-      showMoreProducts: showMoreProducts,
-    };
-  } else {
-    const {
-      categoryProducts,
-      isLoading,
-      total,
-      showedProducts,
-      showMoreProducts,
-    } = useCategoryProducts();
-    productsData = {
-      products: categoryProducts,
-      isLoading,
-      total,
-      showedProducts,
-      showMoreProducts,
-    };
-  }
-
-  return productsData;
+  return {
+    products,
+    isLoading,
+    isSuccess,
+    selectedCategoryQuery,
+    showMore,
+    total,
+  };
 };
