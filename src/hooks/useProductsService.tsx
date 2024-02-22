@@ -21,7 +21,7 @@ export const useProductsService = () => {
 
   const getInitialQuery = () => {
     if (isStaffPage) {
-      if (searchQuery !== '') {
+      if (searchQuery !== '' && searchQuery !== undefined) {
         return { search: searchQuery };
       }
       return { limit, skip };

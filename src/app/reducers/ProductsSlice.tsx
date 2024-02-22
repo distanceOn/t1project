@@ -15,7 +15,6 @@ type ProductsState = {
         skip: number;
       }
     | { category: string; limit: number; skip: number };
-  searchValue: string;
   searchQuery: string;
 };
 
@@ -28,7 +27,6 @@ const initialState: ProductsState = {
   selectedCategory: 'smartphones',
   selectedCategoryQuery: 'smartphones',
   query: { limit: 9, skip: 0 },
-  searchValue: '',
   searchQuery: '',
 };
 
@@ -74,10 +72,6 @@ export const productsSlice = createSlice({
         state.selectedCategoryQuery = action.payload;
       }
     },
-
-    setSearchValue: (state, action) => {
-      state.searchValue = action.payload.trim();
-    },
     setSearchQuery: (state, action) => {
       state.products = [];
       state.total = 0;
@@ -97,7 +91,6 @@ export const {
   setSkip,
   setQuery,
   resetState,
-  setSearchValue,
   setSearchQuery,
 } = productsSlice.actions;
 
