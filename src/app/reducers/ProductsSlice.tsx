@@ -24,7 +24,11 @@ export const productsSlice = createSlice({
   reducers: {
     setData: (state, action) => {
       if (action.payload) {
-        state.products = [...state.products, ...action.payload.products];
+        if (state.skip === 0) {
+          state.products = action.payload.products;
+        } else {
+          state.products = [...state.products, ...action.payload.products];
+        }
         state.total = action.payload.total;
       }
     },
@@ -46,6 +50,7 @@ export const productsSlice = createSlice({
     },
     setSelectedCategoryQuery: (state, action) => {
       if (action.payload) {
+        state.skip = 0;
         state.selectedCategoryQuery = action.payload;
       }
     },

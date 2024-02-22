@@ -13,20 +13,19 @@ export const useProducts = () => {
     state => state.products
   );
 
-  const limit = 2;
+  const limit = 3;
 
-  const initialQuery = isStaffPage
-    ? {
-        limit,
-        skip,
-      }
-    : { category: selectedCategoryQuery, limit, skip };
+  const categoryQuery = { category: selectedCategoryQuery, limit, skip };
+
+  const allQuery = { limit, skip };
+
+  const initialQuery = isStaffPage ? allQuery : categoryQuery;
 
   const [query, setQuery] = useState(initialQuery);
 
   useEffect(() => {
     if (!isStaffPage) {
-      setQuery({ category: selectedCategoryQuery, limit, skip });
+      setQuery(categoryQuery);
     }
   }, [selectedCategoryQuery, skip, dispatch]);
 

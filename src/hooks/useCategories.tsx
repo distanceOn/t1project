@@ -5,7 +5,6 @@ import {
   setCategories,
   setSelectedCategory,
   setSelectedCategoryQuery,
-  setSkip,
 } from '../app/reducers/ProductsSlice';
 
 export const useCategories = () => {
@@ -32,7 +31,6 @@ export const useCategories = () => {
   };
 
   const setCategory = async () => {
-    await dispatch(setSkip(0));
     dispatch(setSelectedCategoryQuery(selectedCategory));
   };
 
