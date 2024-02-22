@@ -1,26 +1,30 @@
 import { useNavigate } from 'react-router-dom';
 import useIsStaffPage from '../../../hooks/useIsStaffPage';
-import { Button } from '../../atoms/Button/Button';
-import { Title } from '../../atoms/Title/Title';
-import { ProductCard } from '../../molecules/ProductCard/ProductCard';
-import { Search } from '../../molecules/Search/Search';
+
 import S from './Products.module.scss';
 import { useEffect, useState } from 'react';
 import { useProducts } from '../../../hooks/useProducts';
+import { Title } from '../../atoms/Title/Title';
+import { Search } from '../../molecules/Search/Search';
+import { ProductCard } from '../../molecules/ProductCard/ProductCard';
+import { Button } from '../../atoms/Button/Button';
 
 export const Products = () => {
   const navigate = useNavigate();
+
+  const { products, isLoading, showMore, total } = useProducts();
 
   const isStaffPage = useIsStaffPage();
 
   const [showBtn, setShowBtn] = useState(false);
 
-  const { products, isLoading, total, showedProducts, showMoreProducts } =
-    useProducts();
-
   useEffect(() => {
-    setShowBtn(showedProducts < total);
-  }, [showedProducts, total]);
+    if (products.length < total) {
+      setShowBtn(true);
+    } else {
+      setShowBtn(false);
+    }
+  }, [products, total]);
 
   const navigateToProduct = (id: number) => {
     if (isStaffPage) {
@@ -43,21 +47,19 @@ export const Products = () => {
       )}
       <ul className={S.products}>
         {isLoading && <div className={S.loading}>loading...</div>}
-        {products
-          .slice(0, showedProducts)
-          .map(({ id, title, price, images }: any) => (
-            <ProductCard
-              title={title}
-              image={images[0]}
-              price={price}
-              onClick={navigateToProduct}
-              id={id}
-              key={title}
-            />
-          ))}
+        {products.map(({ id, title, price, images }: any) => (
+          <ProductCard
+            title={title}
+            image={images[0]}
+            price={price}
+            onClick={navigateToProduct}
+            id={id}
+            key={title}
+          />
+        ))}
       </ul>
       {showBtn && (
-        <Button color='primary' onClick={showMoreProducts} type='catalog'>
+        <Button color='primary' type='catalog' onClick={showMore}>
           Show more
         </Button>
       )}

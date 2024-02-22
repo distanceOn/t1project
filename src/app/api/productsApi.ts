@@ -8,28 +8,33 @@ export const productsApi = baseApi.injectEndpoints({
         method: 'GET',
       }),
     }),
-    getProductsByCategory: build.query({
-      query: (category: string) => ({
-        url: `/products/category/${category}`,
-        method: 'GET',
-      }),
-    }),
-    getAllProducts: build.query({
-      query: ({ limit, skip }: { limit?: number; skip?: number }) => {
+    getProducts: build.query({
+      query: ({
+        category,
+        limit,
+        skip,
+      }: {
+        category?: string;
+        limit?: number;
+        skip?: number;
+      }) => {
         let url = '/products';
+        if (category) {
+          url = `${url}/category/${category}`;
+        }
         if (limit !== undefined) {
           url += `?limit=${limit}`;
         }
         if (skip !== undefined) {
           url += limit !== undefined ? `&skip=${skip}` : `?skip=${skip}`;
         }
-
         return {
           url,
           method: 'GET',
         };
       },
     }),
+
     getSingleProduct: build.query({
       query: (id: string | undefined) => ({
         url: `/products/${id}`,
@@ -41,7 +46,6 @@ export const productsApi = baseApi.injectEndpoints({
 
 export const {
   useGetCategoriesQuery,
-  useGetProductsByCategoryQuery,
   useGetSingleProductQuery,
-  useGetAllProductsQuery,
+  useGetProductsQuery,
 } = productsApi;

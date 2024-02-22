@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 import { useGetCategoriesQuery } from '../app/api/productsApi';
 import { useAppDispatch, useAppSelector } from './reduxHooks';
-import { setCategories } from '../app/reducers/ProductsCategorySlice';
+import {
+  setCategories,
+  setSelectedCategory,
+  setSelectedCategoryQuery,
+} from '../app/reducers/ProductsSlice';
 
 export const useCategories = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +22,29 @@ export const useCategories = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoriesData]);
 
-  const categories = useAppSelector(state => state.productsCategory.categories);
+  const { categories, selectedCategory } = useAppSelector(
+    state => state.products
+  );
 
-  return { categories, isLoading };
+  const chooseSelectedCategory = (category: string) => {
+    dispatch(setSelectedCategory(category));
+  };
+
+  const setCategory = async () => {
+    dispatch(setSelectedCategoryQuery(selectedCategory));
+  };
+
+  const resetCategory = () => {
+    dispatch(setSelectedCategory('smartphones'));
+    dispatch(setSelectedCategoryQuery('smartphones'));
+  };
+
+  return {
+    categories,
+    isLoading,
+    selectedCategory,
+    chooseSelectedCategory,
+    setCategory,
+    resetCategory,
+  };
 };

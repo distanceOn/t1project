@@ -1,50 +1,33 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { useCategoryProducts } from './useCategoryProducts';
-import useIsStaffPage from './useIsStaffPage';
-import { useStaffProducts } from './useStaffProducts';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from './reduxHooks';
+import { setData, setSkip } from '../app/reducers/ProductsSlice';
+import { useProductsService } from './useProductsService';
 
 export const useProducts = () => {
-  const isStaffPage = useIsStaffPage();
+  const dispatch = useAppDispatch();
 
-  let productsData: any = {
-    products: [],
-    isLoading: false,
-    total: 0,
-    showedProducts: 9,
-    showMoreProducts: () => {},
+  const { productsData, isLoading, isSuccess } = useProductsService();
+
+  const { products, total, skip, selectedCategoryQuery, limit } =
+    useAppSelector(state => state.products);
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(setData(productsData));
+    }
+  }, [isLoading, productsData]);
+
+  const showMore = () => {
+    dispatch(setSkip(skip + limit));
   };
 
-  if (isStaffPage) {
-    const {
-      staffProducts,
-      isLoading,
-      total,
-      showedProducts,
-      showMoreProducts,
-    } = useStaffProducts();
-    productsData = {
-      products: staffProducts,
-      isLoading,
-      total,
-      showedProducts,
-      showMoreProducts: showMoreProducts,
-    };
-  } else {
-    const {
-      categoryProducts,
-      isLoading,
-      total,
-      showedProducts,
-      showMoreProducts,
-    } = useCategoryProducts();
-    productsData = {
-      products: categoryProducts,
-      isLoading,
-      total,
-      showedProducts,
-      showMoreProducts,
-    };
-  }
-
-  return productsData;
+  return {
+    products,
+    isLoading,
+    isSuccess,
+    selectedCategoryQuery,
+    showMore,
+    total,
+  };
 };
