@@ -1,18 +1,71 @@
-import { Button } from '../../atoms/Button/Button';
-import { ProductCard } from '../../molecules/ProductCard/ProductCard';
+import { useNavigate } from 'react-router-dom';
+import useIsStaffPage from '../../../hooks/useIsStaffPage';
+
 import S from './Products.module.scss';
+import { useEffect, useState } from 'react';
+import { useProducts } from '../../../hooks/useProducts';
+import { Title } from '../../atoms/Title/Title';
+import { Search } from '../../molecules/Search/Search';
+import { ProductCard } from '../../molecules/ProductCard/ProductCard';
+import { Button } from '../../atoms/Button/Button';
+import { useAppSelector } from '../../../hooks/reduxHooks';
 
 export const Products = () => {
+  const navigate = useNavigate();
+
+  const { searchQuery } = useAppSelector(state => state.products);
+
+  const { products, isLoading, showMore, total } = useProducts();
+
+  const isStaffPage = useIsStaffPage();
+
+  const [showBtn, setShowBtn] = useState(false);
+
+  useEffect(() => {
+    if (products.length < total) {
+      setShowBtn(true);
+    } else {
+      setShowBtn(false);
+    }
+  }, [products, total]);
+
+  const navigateToProduct = (id: number) => {
+    if (isStaffPage) {
+      navigate(`/staff/${id}`);
+    }
+  };
+
+  const staffStyle = `${S.container} ${S.container_staff}`;
+  const containerStyle = isStaffPage ? staffStyle : S.container;
+
   return (
-    <div className={S.container}>
+    <div className={containerStyle}>
+      {isStaffPage && (
+        <>
+          <Title color='grey' size='default'>
+            All products
+          </Title>
+          <Search />
+        </>
+      )}
       <ul className={S.products}>
-        {Array.from({ length: 9 }).map((_, index) => (
-          <ProductCard key={index} />
+        {isLoading && <div className={S.loading}>loading...</div>}
+        {products.map(({ id, title, price, images }: any) => (
+          <ProductCard
+            title={title}
+            image={images[0]}
+            price={price}
+            onClick={navigateToProduct}
+            id={id}
+            key={title}
+          />
         ))}
       </ul>
-      <Button color='primary' href='#' type='catalog'>
-        Show more
-      </Button>
+      {showBtn && !searchQuery && (
+        <Button color='primary' type='catalog' onClick={showMore}>
+          Show more
+        </Button>
+      )}
     </div>
   );
 };

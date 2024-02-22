@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { LogoProps } from './types';
 import { getTotalLogoClassName } from './utils';
 
@@ -7,7 +8,7 @@ export const Logo = ({ color, size, link }: LogoProps) => {
   if (link) {
     return (
       <h4 className={totalClassName}>
-        <a href='/'>Goods4you</a>
+        <Link to='/'>Goods4you</Link>
       </h4>
     );
   }

@@ -1,28 +1,31 @@
 import { Button } from '../../atoms/Button/Button';
 import { Title } from '../../atoms/Title/Title';
 import S from './FilterCategories.module.scss';
+import { useCategories } from '../../../hooks/useCategories';
+
 export const FilterCategories = () => {
-  const categories = [
-    'smartphones',
-    'laptops',
-    'snickers',
-    'snickers',
-    'snickers',
-    'snickers',
-    'snickers',
-    'snickers',
-  ];
+  const { categories, isLoading, selectedCategory, chooseSelectedCategory } =
+    useCategories();
+
   return (
     <div className={S.container}>
       <Title color='grey' size='min'>
         Categories
       </Title>
       <div className={S.categories}>
-        {categories.map((category, index) => (
-          <Button key={index} color='transparent' type='category'>
-            {category}
-          </Button>
-        ))}
+        {isLoading && <div className={S.loading}>loading...</div>}
+        {categories.map((category, index) => {
+          return (
+            <Button
+              onClick={() => chooseSelectedCategory(category)}
+              key={index}
+              color={selectedCategory === category ? 'primary' : 'transparent'}
+              type='category'
+            >
+              {category}
+            </Button>
+          );
+        })}
       </div>
     </div>
   );

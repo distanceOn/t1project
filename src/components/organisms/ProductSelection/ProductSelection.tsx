@@ -1,3 +1,4 @@
+import { useCategories } from '../../../hooks/useCategories';
 import { Text } from '../../atoms/Text/Text';
 import { Title } from '../../atoms/Title/Title';
 import { ChoiceCard } from '../../molecules/ChoiceCard/ChoiceCard';
@@ -5,6 +6,8 @@ import { Steps } from '../../molecules/Steps/Steps';
 import S from './ProductSelection.module.scss';
 
 export const ProductSelection = () => {
+  const { categories, isLoading } = useCategories();
+
   return (
     <div className={S.container}>
       <div className={S.header}>
@@ -21,8 +24,9 @@ export const ProductSelection = () => {
           What type of product are you considering?
         </Title>
         <div className={S.list}>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <ChoiceCard key={index} />
+          {isLoading && <div className={S.loading}>loading...</div>}
+          {categories.map((category, index) => (
+            <ChoiceCard category={category} key={index} />
           ))}
         </div>
       </div>

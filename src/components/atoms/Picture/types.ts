@@ -1,4 +1,4 @@
-export type PictureType = 'small' | 'default' | 'large';
+export type PictureType = 'small' | 'default' | 'large' | 'xlarge';
 export type PictureImage =
   | 'shoes'
   | 'choice'
@@ -12,4 +12,8 @@ export type PictureImage =
 export type PictureProps = {
   size: PictureType;
   image: PictureImage;
+  serverSource?: {
+    src: string | undefined;
+    alt: string;
+  };
 };

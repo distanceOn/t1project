@@ -1,14 +1,20 @@
+import { Link } from 'react-router-dom';
 import S from './HeaderFooterLink.module.scss';
 
 type HeaderLinkProps = {
   href: string;
   children: React.ReactNode;
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
-export const HeaderFooterLink = ({ href, children }: HeaderLinkProps) => {
+export const HeaderFooterLink = ({
+  href,
+  children,
+  onClick,
+}: HeaderLinkProps) => {
   return (
-    <a className={S.link} href={href}>
+    <Link className={S.link} to={href} onClick={onClick}>
       {children}
-    </a>
+    </Link>
   );
 };

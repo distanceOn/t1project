@@ -8,4 +8,5 @@ export type Styles = {
 
 export type GenericTemplateProps = Styles & {
   children: React.ReactNode;
+  id?: string;
 };

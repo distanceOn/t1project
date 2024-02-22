@@ -13,6 +13,7 @@ export type BtnStyles = {
 };
 
 export type ButtonProps = BtnStyles & {
+  onClick?: () => void;
   children: React.ReactNode;
   href?: string;
 };
