@@ -9,11 +9,13 @@ type ProductsState = {
   selectedCategory: string;
   selectedCategoryQuery: string;
   query:
+    | { search: string }
     | {
         limit: number;
         skip: number;
       }
     | { category: string; limit: number; skip: number };
+  searchQuery: string;
 };
 
 const initialState: ProductsState = {
@@ -25,6 +27,7 @@ const initialState: ProductsState = {
   selectedCategory: 'smartphones',
   selectedCategoryQuery: 'smartphones',
   query: { limit: 9, skip: 0 },
+  searchQuery: '',
 };
 
 export const productsSlice = createSlice({
@@ -69,6 +72,11 @@ export const productsSlice = createSlice({
         state.selectedCategoryQuery = action.payload;
       }
     },
+    setSearchQuery: (state, action) => {
+      state.products = [];
+      state.total = 0;
+      state.searchQuery = action.payload.trim();
+    },
     resetState: () => {
       return initialState;
     },
@@ -83,6 +91,7 @@ export const {
   setSkip,
   setQuery,
   resetState,
+  setSearchQuery,
 } = productsSlice.actions;
 
 export const productsSliceReducer = productsSlice.reducer;

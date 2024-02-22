@@ -8,9 +8,12 @@ import { Title } from '../../atoms/Title/Title';
 import { Search } from '../../molecules/Search/Search';
 import { ProductCard } from '../../molecules/ProductCard/ProductCard';
 import { Button } from '../../atoms/Button/Button';
+import { useAppSelector } from '../../../hooks/reduxHooks';
 
 export const Products = () => {
   const navigate = useNavigate();
+
+  const { searchQuery } = useAppSelector(state => state.products);
 
   const { products, isLoading, showMore, total } = useProducts();
 
@@ -58,7 +61,7 @@ export const Products = () => {
           />
         ))}
       </ul>
-      {showBtn && (
+      {showBtn && !searchQuery && (
         <Button color='primary' type='catalog' onClick={showMore}>
           Show more
         </Button>

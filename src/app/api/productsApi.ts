@@ -13,10 +13,12 @@ export const productsApi = baseApi.injectEndpoints({
         category,
         limit,
         skip,
+        search,
       }: {
         category?: string;
         limit?: number;
         skip?: number;
+        search?: string;
       }) => {
         let url = '/products';
         if (category) {
@@ -27,6 +29,9 @@ export const productsApi = baseApi.injectEndpoints({
         }
         if (skip !== undefined) {
           url += limit !== undefined ? `&skip=${skip}` : `?skip=${skip}`;
+        }
+        if (search !== undefined && search !== '' && search !== null) {
+          url = url + `/search?q=${search}`;
         }
         return {
           url,

@@ -10,9 +10,8 @@ export const useProductsService = () => {
   const dispatch = useAppDispatch();
 
   const isStaffPage = useIsStaffPage();
-  const { skip, selectedCategoryQuery, query, limit } = useAppSelector(
-    state => state.products
-  );
+  const { skip, selectedCategoryQuery, query, limit, searchQuery } =
+    useAppSelector(state => state.products);
 
   const {
     data: productsData,
@@ -20,27 +19,28 @@ export const useProductsService = () => {
     isSuccess,
   } = useGetProductsQuery(query);
 
-  const categoryQuery = { category: selectedCategoryQuery, limit, skip };
-
-  const allQuery = { limit, skip };
-
-  const initialQuery = isStaffPage ? allQuery : categoryQuery;
+  const getInitialQuery = () => {
+    if (isStaffPage) {
+      if (searchQuery !== '' && searchQuery !== undefined) {
+        return { search: searchQuery };
+      }
+      return { limit, skip };
+    }
+    return { category: selectedCategoryQuery, limit, skip };
+  };
 
   const location = useLocation();
 
   useEffect(() => {
+    const resultQuery = getInitialQuery();
     dispatch(resetState());
-    dispatch(setQuery(initialQuery));
+    dispatch(setQuery(resultQuery));
   }, [location.pathname]);
 
   useEffect(() => {
-    if (isStaffPage) {
-      dispatch(setQuery(allQuery));
-    }
-    if (!isStaffPage) {
-      dispatch(setQuery(categoryQuery));
-    }
-  }, [selectedCategoryQuery, skip, dispatch]);
+    const resultQuery = getInitialQuery();
+    dispatch(setQuery(resultQuery));
+  }, [selectedCategoryQuery, skip, dispatch, searchQuery]);
 
   useEffect(() => {
     console.log(query);
