@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from './reduxHooks';
 import useIsStaffPage from './useIsStaffPage';
 import { resetState, setQuery } from '../app/reducers/ProductsSlice';
 import { useGetProductsQuery } from '../app/api/productsApi';
+import { useLocation } from 'react-router-dom';
 
 export const useProductsService = () => {
   const dispatch = useAppDispatch();
@@ -25,10 +26,12 @@ export const useProductsService = () => {
 
   const initialQuery = isStaffPage ? allQuery : categoryQuery;
 
+  const location = useLocation();
+
   useEffect(() => {
     dispatch(resetState());
     dispatch(setQuery(initialQuery));
-  }, [isStaffPage]);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (isStaffPage) {
