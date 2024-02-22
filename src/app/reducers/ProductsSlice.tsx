@@ -7,6 +7,12 @@ type ProductsState = {
   categories: any[];
   selectedCategory: string;
   selectedCategoryQuery: string;
+  query:
+    | {
+        limit: number;
+        skip: number;
+      }
+    | { category: string; limit: number; skip: number };
 };
 
 const initialState: ProductsState = {
@@ -16,6 +22,7 @@ const initialState: ProductsState = {
   categories: [],
   selectedCategory: 'smartphones',
   selectedCategoryQuery: 'smartphones',
+  query: { limit: 9, skip: 0 },
 };
 
 export const productsSlice = createSlice({
@@ -30,6 +37,12 @@ export const productsSlice = createSlice({
           state.products = [...state.products, ...action.payload.products];
         }
         state.total = action.payload.total;
+      }
+    },
+
+    setQuery: (state, action) => {
+      if (action.payload) {
+        state.query = action.payload;
       }
     },
 
@@ -54,6 +67,9 @@ export const productsSlice = createSlice({
         state.selectedCategoryQuery = action.payload;
       }
     },
+    resetState: () => {
+      return initialState;
+    },
   },
 });
 
@@ -63,6 +79,8 @@ export const {
   setSelectedCategory,
   setSelectedCategoryQuery,
   setSkip,
+  setQuery,
+  resetState,
 } = productsSlice.actions;
 
 export const productsSliceReducer = productsSlice.reducer;
