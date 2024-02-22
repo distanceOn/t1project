@@ -4,6 +4,7 @@ type ProductsState = {
   products: any[];
   total: number;
   skip: number;
+  limit: number;
   categories: any[];
   selectedCategory: string;
   selectedCategoryQuery: string;
@@ -19,6 +20,7 @@ const initialState: ProductsState = {
   products: [],
   total: 0,
   skip: 0,
+  limit: 9,
   categories: [],
   selectedCategory: 'smartphones',
   selectedCategoryQuery: 'smartphones',

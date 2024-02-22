@@ -1,53 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import { useGetProductsQuery } from '../app/api/productsApi';
 import { useAppDispatch, useAppSelector } from './reduxHooks';
-import {
-  resetState,
-  setData,
-  setQuery,
-  setSkip,
-} from '../app/reducers/ProductsSlice';
-import useIsStaffPage from './useIsStaffPage';
+import { setData, setSkip } from '../app/reducers/ProductsSlice';
+import { useProductsService } from './useProductsService';
 
 export const useProducts = () => {
   const dispatch = useAppDispatch();
-  const isStaffPage = useIsStaffPage();
 
-  const { products, total, skip, selectedCategoryQuery, query } =
+  const { productsData, isLoading, isSuccess } = useProductsService();
+
+  const { products, total, skip, selectedCategoryQuery, limit } =
     useAppSelector(state => state.products);
-
-  const limit = 9;
-
-  const categoryQuery = { category: selectedCategoryQuery, limit, skip };
-
-  const allQuery = { limit, skip };
-
-  const initialQuery = isStaffPage ? allQuery : categoryQuery;
-
-  useEffect(() => {
-    dispatch(resetState());
-    dispatch(setQuery(initialQuery));
-  }, [isStaffPage]);
-
-  const {
-    data: productsData,
-    isLoading,
-    isSuccess,
-  } = useGetProductsQuery(query);
-
-  useEffect(() => {
-    if (isStaffPage) {
-      dispatch(setQuery(allQuery));
-    }
-    if (!isStaffPage) {
-      dispatch(setQuery(categoryQuery));
-    }
-  }, [selectedCategoryQuery, skip, dispatch]);
-
-  useEffect(() => {
-    console.log(query);
-  }, [query]);
 
   useEffect(() => {
     if (isSuccess) {
