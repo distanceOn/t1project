@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useCategories } from '../../../hooks/useCategories';
 import { Text } from '../../atoms/Text/Text';
 import { Title } from '../../atoms/Title/Title';
@@ -6,10 +6,22 @@ import { ChoiceCard } from '../../molecules/ChoiceCard/ChoiceCard';
 import { Steps } from '../../molecules/Steps/Steps';
 import S from './ProductSelection.module.scss';
 import { useAppSelector } from '../../../hooks/reduxHooks';
+import { useSelection } from '../../../hooks/useSelection';
 
 export const ProductSelection = () => {
   const { categories, isLoading } = useCategories();
-  const { selected } = useAppSelector(state => state.selection);
+  const { selected, step, total } = useAppSelector(state => state.selection);
+  const { getResults, resetSelection } = useSelection();
+
+  useEffect(() => {
+    if (step === 2) {
+      getResults();
+    }
+    if (step === 1) {
+      resetSelection();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step]);
 
   useEffect(() => {
     console.log(selected);
@@ -31,9 +43,15 @@ export const ProductSelection = () => {
         </Title>
         <div className={S.list}>
           {isLoading && <div className={S.loading}>loading...</div>}
-          {categories.map((category, index) => (
-            <ChoiceCard selected={selected} category={category} key={index} />
-          ))}
+          {total.length > 0 ? (
+            <Text color='lightgrey' size='default'>
+              {total.length} results
+            </Text>
+          ) : (
+            categories.map((category, index) => (
+              <ChoiceCard selected={selected} category={category} key={index} />
+            ))
+          )}
         </div>
       </div>
       <Steps />

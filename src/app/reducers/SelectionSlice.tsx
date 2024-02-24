@@ -2,11 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 type SelectionState = {
   selected: string[];
+  total: any[];
   step: 1 | 2;
 };
 
 const initialState: SelectionState = {
   selected: [],
+  total: [],
   step: 1,
 };
 
@@ -31,10 +33,15 @@ export const selectionSlice = createSlice({
         state.step = action.payload;
       }
     },
+    setTotal: (state, action) => {
+      if (action.payload) {
+        state.total = action.payload;
+      }
+    },
   },
 });
 
-export const { addSelected, removeSelected, changeStep } =
+export const { addSelected, removeSelected, changeStep, setTotal } =
   selectionSlice.actions;
 
 export const selectionSliceReducer = selectionSlice.reducer;
