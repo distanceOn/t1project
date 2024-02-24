@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { ProductSelectionItem } from '../../utils/types';
 
 type SelectionState = {
   selected: string[];
-  total: any[];
+  total: ProductSelectionItem[];
   step: 1 | 2;
 };
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useCategories } from '../../../hooks/useCategories';
 import { Text } from '../../atoms/Text/Text';
 import { Title } from '../../atoms/Title/Title';
@@ -7,6 +7,7 @@ import { Steps } from '../../molecules/Steps/Steps';
 import S from './ProductSelection.module.scss';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { useSelection } from '../../../hooks/useSelection';
+import { ProductCard } from '../../molecules/ProductCard/ProductCard';
 
 export const ProductSelection = () => {
   const { categories, isLoading } = useCategories();
@@ -26,6 +27,10 @@ export const ProductSelection = () => {
   useEffect(() => {
     console.log(selected);
   }, [selected]);
+
+  useEffect(() => {
+    console.log(total);
+  }, [total]);
   return (
     <div className={S.container}>
       <div className={S.header}>
@@ -43,15 +48,23 @@ export const ProductSelection = () => {
         </Title>
         <div className={S.list}>
           {isLoading && <div className={S.loading}>loading...</div>}
-          {total.length > 0 ? (
-            <Text color='lightgrey' size='default'>
-              {total.length} results
-            </Text>
-          ) : (
-            categories.map((category, index) => (
-              <ChoiceCard selected={selected} category={category} key={index} />
-            ))
-          )}
+          {total.length > 0
+            ? total.map((item, index) => (
+                <ProductCard
+                  key={item.title}
+                  title={item.title}
+                  image={item.images[0]}
+                  price={item.price}
+                  id={item.id}
+                />
+              ))
+            : categories.map((category, index) => (
+                <ChoiceCard
+                  selected={selected}
+                  category={category}
+                  key={index}
+                />
+              ))}
         </div>
       </div>
       <Steps />

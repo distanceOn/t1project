@@ -6,8 +6,9 @@ import S from './Steps.module.scss';
 
 export const Steps = () => {
   const dispatch = useAppDispatch();
-  const { step } = useAppSelector(state => state.selection);
+  const { step, selected } = useAppSelector(state => state.selection);
   const handleClick = () => {
+    if (selected.length === 0) return;
     dispatch(changeStep(step !== 1 ? 1 : 2));
   };
   return (
