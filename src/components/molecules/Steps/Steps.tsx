@@ -6,7 +6,7 @@ export const Steps = () => {
   return (
     <div className={S.container}>
       <Text color='lightgrey' size='default'>
-        1 of 3
+        1 of 2
       </Text>
       <Button color='transparent' type='steps'>
         Next step
