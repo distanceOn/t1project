@@ -34,19 +34,30 @@ export const ProductSelection = () => {
   return (
     <div className={S.container}>
       <div className={S.header}>
-        <Title color='grey' size='small'>
-          We will select the perfect product for you
-        </Title>
-        <Text color='lightgrey' size='default'>
-          Answer three questions and we will send you a catalog with the most
-          suitable products for you.
-        </Text>
+        {total.length === 0 ? (
+          <>
+            <Title color='grey' size='small'>
+              We will select the perfect product for you
+            </Title>
+            <Text color='lightgrey' size='default'>
+              Answer three questions and we will send you a catalog with the
+              most suitable products for you.
+            </Text>
+          </>
+        ) : (
+          <Title color='grey' size='small'>
+            Your selection is ready!
+          </Title>
+        )}
       </div>
       <div className={S.products}>
-        <Title color='grey' size='small'>
-          What type of product are you considering?
-        </Title>
-        <div className={S.list}>
+        {total.length === 0 && (
+          <Title color='grey' size='small'>
+            What type of product are you considering?
+          </Title>
+        )}
+
+        <div className={total.length === 0 ? S.list : S.list_results}>
           {isLoading && <div className={S.loading}>loading...</div>}
           {total.length > 0
             ? total.map((item, index) => (
