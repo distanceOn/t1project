@@ -2,10 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 type SelectionState = {
   selected: string[];
+  step: 1 | 2;
 };
 
 const initialState: SelectionState = {
   selected: [],
+  step: 1,
 };
 
 export const selectionSlice = createSlice({
@@ -24,9 +26,15 @@ export const selectionSlice = createSlice({
         state.selected = state.selected.filter(item => item !== action.payload);
       }
     },
+    changeStep: (state, action) => {
+      if (action.payload) {
+        state.step = action.payload;
+      }
+    },
   },
 });
 
-export const { addSelected, removeSelected } = selectionSlice.actions;
+export const { addSelected, removeSelected, changeStep } =
+  selectionSlice.actions;
 
 export const selectionSliceReducer = selectionSlice.reducer;

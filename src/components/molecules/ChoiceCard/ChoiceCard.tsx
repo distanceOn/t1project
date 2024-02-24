@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Checkbox } from '../../atoms/Checkbox/Checkbox';
 // import { Picture } from '../../atoms/Picture/Picture';
 import { Text } from '../../atoms/Text/Text';
@@ -34,6 +34,7 @@ export const ChoiceCard = ({
     } else {
       dispatch(removeSelected(category));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isChecked]);
 
   return (
