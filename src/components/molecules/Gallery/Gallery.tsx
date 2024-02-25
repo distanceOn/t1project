@@ -5,7 +5,9 @@ import './Gallery.css';
 import { useSingleProduct } from '../../../hooks/useSingleProduct';
 
 export const Gallery = () => {
-  const { images } = useSingleProduct();
+  const { inputValues } = useSingleProduct();
+
+  const { images } = inputValues;
 
   const formattedImages = images.map((image: string) => ({
     original: image,

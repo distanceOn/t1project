@@ -3,20 +3,51 @@ import { Text } from '../../atoms/Text/Text';
 import { Title } from '../../atoms/Title/Title';
 import S from './ProductInfo.module.scss';
 import { useSingleProduct } from '../../../hooks/useSingleProduct';
+import { Button } from '../../atoms/Button/Button';
+import { Input } from '../../atoms/Input/Input';
 
 export const ProductInfo = () => {
+  const { sku, inputValues, discount, isEdit, setIsEdit, setInputValues } =
+    useSingleProduct();
+
   const {
+    title,
     category,
     description,
     brand,
     stock,
-    discountPercentage,
     price,
     rating,
-    title,
-    sku,
-    discount,
-  } = useSingleProduct();
+    discountPercentage,
+  } = inputValues;
+
+  const defineValue = (value: string | number, add?: string) => {
+    const formattedValue = add ? `${value + add}` : value;
+    if (isEdit) {
+      return (
+        <Input
+          value={value}
+          onChange={newValue =>
+            setInputValues({ ...inputValues, [value]: newValue })
+          }
+        />
+      );
+    }
+    if (!isEdit) {
+      return (
+        <Text size='default' color='grey'>
+          {formattedValue}
+        </Text>
+      );
+    }
+  };
+
+  const handleClick = () => {
+    if (isEdit) {
+      console.log(inputValues);
+    }
+    setIsEdit(!isEdit);
+  };
 
   return (
     <div className={S.container}>
@@ -44,17 +75,13 @@ export const ProductInfo = () => {
           <Text size='default' color='lightgrey'>
             Base price
           </Text>
-          <Text size='default' color='grey'>
-            {price}$
-          </Text>
+          {defineValue(price, '$')}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Discount percentage
           </Text>
-          <Text size='default' color='grey'>
-            {discountPercentage}%
-          </Text>
+          {defineValue(discountPercentage, '%')}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
@@ -68,35 +95,31 @@ export const ProductInfo = () => {
           <Text size='default' color='lightgrey'>
             Stock
           </Text>
-          <Text size='default' color='grey'>
-            {stock}
-          </Text>
+          {defineValue(stock)}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Brand
           </Text>
-          <Text size='default' color='grey'>
-            {brand}
-          </Text>
+
+          {defineValue(brand)}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Category
           </Text>
-          <Text size='default' color='grey'>
-            {category}
-          </Text>
+          {defineValue(category)}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Description
           </Text>
-          <Text size='default' color='grey'>
-            {description}
-          </Text>
+          {defineValue(description)}
         </div>
       </div>
+      <Button onClick={handleClick} color='primary' type='default'>
+        {isEdit ? 'Save' : 'Edit'}
+      </Button>
     </div>
   );
 };

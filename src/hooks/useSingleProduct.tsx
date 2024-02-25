@@ -1,8 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useParams } from 'react-router-dom';
 import { useGetSingleProductQuery } from '../app/api/productsApi';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useSingleProduct = () => {
+  const [isEdit, setIsEdit] = useState(false);
+
   const formatSku = (sku: number) => {
     const skuStr = sku.toString();
     return skuStr.padStart(4, '0');
@@ -10,11 +13,7 @@ export const useSingleProduct = () => {
 
   const { id } = useParams();
 
-  const { data, isLoading } = useGetSingleProductQuery(id);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  const { data, isLoading, isSuccess } = useGetSingleProductQuery(id);
 
   const sku = formatSku(Number(id));
 
@@ -35,7 +34,7 @@ export const useSingleProduct = () => {
       ? price - Math.round((price * discountPercentage) / 100)
       : 0;
 
-  return {
+  const [inputValues, setInputValues] = useState<any>({
     category,
     description,
     brand,
@@ -44,10 +43,23 @@ export const useSingleProduct = () => {
     price,
     rating,
     title,
-    isLoading,
+    images,
+  });
+
+  useEffect(() => {
+    if (isSuccess) {
+      setInputValues(data);
+    }
+  }, [data]);
+
+  return {
     id,
+    isLoading,
     sku,
     discount,
-    images,
+    inputValues,
+    setInputValues,
+    isEdit,
+    setIsEdit,
   };
 };
