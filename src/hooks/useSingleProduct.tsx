@@ -1,8 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useParams } from 'react-router-dom';
 import { useGetSingleProductQuery } from '../app/api/productsApi';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useSingleProduct = () => {
+  const [isEdit, setIsEdit] = useState(false);
+
   const formatSku = (sku: number) => {
     const skuStr = sku.toString();
     return skuStr.padStart(4, '0');
@@ -10,11 +13,7 @@ export const useSingleProduct = () => {
 
   const { id } = useParams();
 
-  const { data, isLoading } = useGetSingleProductQuery(id);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  const { data, isLoading, isSuccess } = useGetSingleProductQuery(id);
 
   const sku = formatSku(Number(id));
 
@@ -30,24 +29,58 @@ export const useSingleProduct = () => {
     images,
   } = data || {};
 
-  const discount =
-    price && discountPercentage
+  const getDiscount = (price: number, discountPercentage: number) => {
+    return price && discountPercentage
       ? price - Math.round((price * discountPercentage) / 100)
-      : 0;
-
-  return {
+      : price;
+  };
+  const [inputValues, setInputValues] = useState<{
+    category: string;
+    price: number;
+    stock: number;
+    brand: string;
+    description: string;
+    discountPercentage: number;
+  }>({
     category,
     description,
     brand,
     stock,
-    discountPercentage,
     price,
+    discountPercentage,
+  });
+
+  useEffect(() => {
+    console.log(inputValues);
+  }, [inputValues]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      const { category, price, stock, brand, description, discountPercentage } =
+        data;
+      setInputValues({
+        category,
+        description,
+        brand,
+        stock,
+        price,
+        discountPercentage,
+      });
+    }
+  }, [data]);
+
+  return {
+    id,
+    isLoading,
+    sku,
+    getDiscount,
+    discountPercentage,
+    inputValues,
+    setInputValues,
+    isEdit,
+    setIsEdit,
     rating,
     title,
-    isLoading,
-    id,
-    sku,
-    discount,
     images,
   };
 };
