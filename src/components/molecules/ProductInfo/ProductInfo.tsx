@@ -5,30 +5,32 @@ import S from './ProductInfo.module.scss';
 import { useSingleProduct } from '../../../hooks/useSingleProduct';
 import { Button } from '../../atoms/Button/Button';
 import { Input } from '../../atoms/Input/Input';
+import { useUpdateProductMutation } from '../../../app/api/productsApi';
 
 export const ProductInfo = () => {
-  const { sku, inputValues, discount, isEdit, setIsEdit, setInputValues } =
-    useSingleProduct();
-
   const {
     title,
-    category,
-    description,
-    brand,
-    stock,
-    price,
     rating,
-    discountPercentage,
-  } = inputValues;
+    id,
+    sku,
+    inputValues,
+    getDiscount,
+    isEdit,
+    setIsEdit,
+    setInputValues,
+  } = useSingleProduct();
 
-  const defineValue = (value: string | number, add?: string) => {
+  const { category, description, brand, stock, price, discountPercentage } =
+    inputValues;
+
+  const defineValue = (key: string, value: string | number, add?: string) => {
     const formattedValue = add ? `${value + add}` : value;
     if (isEdit) {
       return (
         <Input
           value={value}
           onChange={newValue =>
-            setInputValues({ ...inputValues, [value]: newValue })
+            setInputValues({ ...inputValues, [key]: newValue })
           }
         />
       );
@@ -42,9 +44,32 @@ export const ProductInfo = () => {
     }
   };
 
+  const [updateProduct] = useUpdateProductMutation();
+
+  const handleUpdateProduct = async (data: any) => {
+    try {
+      const result = await updateProduct({ id: Number(id), data });
+      if ('data' in result) {
+        const { category, description, brand, stock, price } = result.data;
+        setInputValues({
+          category,
+          description,
+          brand,
+          stock,
+          price,
+          discountPercentage,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleClick = () => {
     if (isEdit) {
-      console.log(inputValues);
+      // const data = { ...inputValues };
+      const { category, description, brand, stock, price } = inputValues;
+      handleUpdateProduct({ category, description, brand, stock, price });
     }
     setIsEdit(!isEdit);
   };
@@ -75,46 +100,46 @@ export const ProductInfo = () => {
           <Text size='default' color='lightgrey'>
             Base price
           </Text>
-          {defineValue(price, '$')}
+          {defineValue('price', price, '$')}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Discount percentage
           </Text>
-          {defineValue(discountPercentage, '%')}
+          {defineValue('discountPercentage', discountPercentage, '%')}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Discount price
           </Text>
           <Text size='default' color='grey'>
-            {discount}$
+            {getDiscount(price, discountPercentage)}$
           </Text>
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Stock
           </Text>
-          {defineValue(stock)}
+          {defineValue('stock', stock)}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Brand
           </Text>
 
-          {defineValue(brand)}
+          {defineValue('brand', brand)}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Category
           </Text>
-          {defineValue(category)}
+          {defineValue('category', category)}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Description
           </Text>
-          {defineValue(description)}
+          {defineValue('description', description)}
         </div>
       </div>
       <Button onClick={handleClick} color='primary' type='default'>

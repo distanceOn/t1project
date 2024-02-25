@@ -29,26 +29,43 @@ export const useSingleProduct = () => {
     images,
   } = data || {};
 
-  const discount =
-    price && discountPercentage
+  const getDiscount = (price: number, discountPercentage: number) => {
+    return price && discountPercentage
       ? price - Math.round((price * discountPercentage) / 100)
-      : 0;
-
-  const [inputValues, setInputValues] = useState<any>({
+      : price;
+  };
+  const [inputValues, setInputValues] = useState<{
+    category: string;
+    price: number;
+    stock: number;
+    brand: string;
+    description: string;
+    discountPercentage: number;
+  }>({
     category,
     description,
     brand,
     stock,
-    discountPercentage,
     price,
-    rating,
-    title,
-    images,
+    discountPercentage,
   });
 
   useEffect(() => {
+    console.log(inputValues);
+  }, [inputValues]);
+
+  useEffect(() => {
     if (isSuccess) {
-      setInputValues(data);
+      const { category, price, stock, brand, description, discountPercentage } =
+        data;
+      setInputValues({
+        category,
+        description,
+        brand,
+        stock,
+        price,
+        discountPercentage,
+      });
     }
   }, [data]);
 
@@ -56,10 +73,14 @@ export const useSingleProduct = () => {
     id,
     isLoading,
     sku,
-    discount,
+    getDiscount,
+    discountPercentage,
     inputValues,
     setInputValues,
     isEdit,
     setIsEdit,
+    rating,
+    title,
+    images,
   };
 };

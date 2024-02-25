@@ -46,6 +46,14 @@ export const productsApi = baseApi.injectEndpoints({
         method: 'GET',
       }),
     }),
+    updateProduct: build.mutation({
+      query: ({ id, data }) => ({
+        url: `/products/${Number(id)}`,
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      }),
+    }),
   }),
 });
 
@@ -53,4 +61,5 @@ export const {
   useGetCategoriesQuery,
   useGetSingleProductQuery,
   useGetProductsQuery,
+  useUpdateProductMutation,
 } = productsApi;
