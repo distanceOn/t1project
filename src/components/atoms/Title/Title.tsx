@@ -1,20 +1,11 @@
+import React from 'react';
 import { TitleProps } from './types';
-import { getTotalTitleClassName } from './utils';
+import { getTotalTitleClassName, titleTagMap } from './utils';
 
 export const Title = ({ children, color, size }: TitleProps) => {
   const className = getTotalTitleClassName({ color, size });
 
-  if (size === 'large') {
-    return <h1 className={className}>{children}</h1>;
-  }
+  const Tag: React.ElementType = titleTagMap[size] || titleTagMap.default;
 
-  if (size === 'small') {
-    return <h3 className={className}>{children}</h3>;
-  }
-
-  if (size === 'min' || size === 'xmin') {
-    return <h4 className={className}>{children}</h4>;
-  }
-
-  return <h2 className={className}>{children}</h2>;
+  return <Tag className={className}>{children}</Tag>;
 };
