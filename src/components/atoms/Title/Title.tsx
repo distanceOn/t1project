@@ -1,6 +1,7 @@
 import React from 'react';
 import { TitleProps } from './types';
-import { getTotalTitleClassName, titleTagMap } from './utils';
+import { getTotalTitleClassName } from './utils';
+import { titleTagMap } from './constants';
 
 export const Title = ({ children, color, size }: TitleProps) => {
   const className = getTotalTitleClassName({ color, size });

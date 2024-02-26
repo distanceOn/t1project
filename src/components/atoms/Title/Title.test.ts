@@ -1,4 +1,5 @@
-import { getTitleClasses, getTotalTitleClassName, titleTagMap } from './utils';
+import { titleTagMap } from './constants';
+import { getTitleClasses, getTotalTitleClassName } from './utils';
 
 describe('titleTagMap function tests', () => {
   test('should return correct HTML tag based on size', () => {

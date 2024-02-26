@@ -1,9 +1,6 @@
 import S from './Rating.module.scss';
-import { RatingProps, StarProps } from './types';
-
-const Star = ({ isFull }: StarProps) => (
-  <span className={isFull ? S.full : S.empty}>{isFull ? '★' : '☆'}</span>
-);
+import { Star } from './components/Star';
+import { RatingProps } from './types';
 
 const Rating: React.FC<RatingProps> = ({ value, max = 5 }) => {
   const stars = Array.from({ length: max }, (_, index) => ({
