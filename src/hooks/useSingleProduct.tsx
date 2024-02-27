@@ -2,6 +2,7 @@
 import { useParams } from 'react-router-dom';
 import { useGetSingleProductQuery } from '../app/api/productsApi';
 import { useEffect, useState } from 'react';
+import { ProductInfoValuesChangable } from '../utils/types';
 
 export const useSingleProduct = () => {
   const [isEdit, setIsEdit] = useState(false);
@@ -34,14 +35,7 @@ export const useSingleProduct = () => {
       ? price - Math.round((price * discountPercentage) / 100)
       : price;
   };
-  const [inputValues, setInputValues] = useState<{
-    category: string;
-    price: number;
-    stock: number;
-    brand: string;
-    description: string;
-    discountPercentage: number;
-  }>({
+  const [inputValues, setInputValues] = useState<ProductInfoValuesChangable>({
     category,
     description,
     brand,

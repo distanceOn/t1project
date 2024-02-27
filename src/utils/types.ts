@@ -8,3 +8,15 @@ export type ProductSelectionItem = {
   images: string[];
   category: string;
 };
+
+export type ProductInfoValuesForApi = {
+  category: string;
+  price: number;
+  stock: number;
+  brand: string;
+  description: string;
+};
+
+export type ProductInfoValuesChangable = ProductInfoValuesForApi & {
+  discountPercentage: number;
+};

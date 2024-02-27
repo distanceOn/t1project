@@ -2,77 +2,25 @@ import Rating from '../../atoms/Rating/Rating';
 import { Text } from '../../atoms/Text/Text';
 import { Title } from '../../atoms/Title/Title';
 import S from './ProductInfo.module.scss';
-import { useSingleProduct } from '../../../hooks/useSingleProduct';
 import { Button } from '../../atoms/Button/Button';
-import { Input } from '../../atoms/Input/Input';
-import { useUpdateProductMutation } from '../../../app/api/productsApi';
+import { useProductInfo } from './useProductInfo';
 
 export const ProductInfo = () => {
   const {
     title,
-    rating,
-    id,
     sku,
-    inputValues,
+    rating,
+    price,
+    discountPercentage,
+    category,
+    brand,
+    defineValue,
     getDiscount,
+    description,
+    handleClickBtn,
     isEdit,
-    setIsEdit,
-    setInputValues,
-  } = useSingleProduct();
-
-  const { category, description, brand, stock, price, discountPercentage } =
-    inputValues;
-
-  const defineValue = (key: string, value: string | number, add?: string) => {
-    const formattedValue = add ? `${value + add}` : value;
-    if (isEdit) {
-      return (
-        <Input
-          value={value}
-          onChange={newValue =>
-            setInputValues({ ...inputValues, [key]: newValue })
-          }
-        />
-      );
-    }
-    if (!isEdit) {
-      return (
-        <Text size='default' color='grey'>
-          {formattedValue}
-        </Text>
-      );
-    }
-  };
-
-  const [updateProduct] = useUpdateProductMutation();
-
-  const handleUpdateProduct = async (data: any) => {
-    try {
-      const result = await updateProduct({ id: Number(id), data });
-      if ('data' in result) {
-        const { category, description, brand, stock, price } = result.data;
-        setInputValues({
-          category,
-          description,
-          brand,
-          stock,
-          price,
-          discountPercentage,
-        });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleClick = () => {
-    if (isEdit) {
-      // const data = { ...inputValues };
-      const { category, description, brand, stock, price } = inputValues;
-      handleUpdateProduct({ category, description, brand, stock, price });
-    }
-    setIsEdit(!isEdit);
-  };
+    stock,
+  } = useProductInfo();
 
   return (
     <div className={S.container}>
@@ -142,7 +90,7 @@ export const ProductInfo = () => {
           {defineValue('description', description)}
         </div>
       </div>
-      <Button onClick={handleClick} color='primary' type='default'>
+      <Button onClick={handleClickBtn} color='primary' type='default'>
         {isEdit ? 'Save' : 'Edit'}
       </Button>
     </div>
