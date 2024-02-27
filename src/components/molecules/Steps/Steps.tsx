@@ -9,7 +9,8 @@ export const Steps = () => {
   const { step, selected } = useAppSelector(state => state.selection);
   const handleClick = () => {
     if (selected.length === 0) return;
-    dispatch(changeStep(step !== 1 ? 1 : 2));
+    const finalStep = step === 1 ? 2 : 1;
+    dispatch(changeStep(finalStep));
   };
   return (
     <div className={S.container}>
