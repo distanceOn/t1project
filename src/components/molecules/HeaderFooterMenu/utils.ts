@@ -1,12 +1,9 @@
 export const toAnchor = (event: React.MouseEvent<HTMLAnchorElement>) => {
   event.preventDefault();
-  const href = event.currentTarget.getAttribute('href');
-  const id = href?.substring(href.indexOf('#')) ?? '';
+  const hash = event.currentTarget.hash;
+  const element = document.querySelector(hash);
 
-  if (id.startsWith('#') && id.length > 1) {
-    const element = document.querySelector(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
   }
 };

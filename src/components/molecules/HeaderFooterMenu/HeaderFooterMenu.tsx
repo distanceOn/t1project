@@ -13,16 +13,19 @@ export const HeaderFooterMenu = ({ type }: HeaderFooterType) => {
 
   const handleLinkClick = useCallback(toAnchor, []);
 
-  const baseContent = items.map(({ name, link }, index) => (
-    <li key={index}>
-      <HeaderFooterLink
-        href={link}
-        onClick={link.includes('#') ? handleLinkClick : undefined}
-      >
-        {name}
-      </HeaderFooterLink>
-    </li>
-  ));
+  const baseContent = items.map(({ name, link }, index) => {
+    const isAnchor = link.includes('#');
+    return (
+      <li key={index}>
+        <HeaderFooterLink
+          href={link}
+          onClick={isAnchor ? handleLinkClick : undefined}
+        >
+          {name}
+        </HeaderFooterLink>
+      </li>
+    );
+  });
 
   const staffContent = (
     <HeaderFooterLink href='/'>Back to site</HeaderFooterLink>
