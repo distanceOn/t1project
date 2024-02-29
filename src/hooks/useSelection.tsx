@@ -1,24 +1,10 @@
 import { useAppDispatch, useAppSelector } from './helpers/reduxHooks';
 import { setTotal } from '../app/reducers/SelectionSlice';
+import { getTopProduct } from './utils/toGetTopProducts';
 
 export const useSelection = () => {
   const dispatch = useAppDispatch();
   const { selected } = useAppSelector(state => state.selection);
-
-  const getTopProduct = (results: any) => {
-    const products = results.products;
-    let topProduct = null;
-    let maxRating = -Infinity;
-
-    products.forEach((product: any) => {
-      if (product.rating > maxRating) {
-        maxRating = product.rating;
-        topProduct = product;
-      }
-    });
-
-    return topProduct;
-  };
 
   const fetchTopProducts = async (addresses: string[]) => {
     const results = [];
