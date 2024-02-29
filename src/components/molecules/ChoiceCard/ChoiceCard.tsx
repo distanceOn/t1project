@@ -4,7 +4,7 @@ import { Checkbox } from '../../atoms/Checkbox/Checkbox';
 import { Text } from '../../atoms/Text/Text';
 
 import S from './ChoiceCard.module.scss';
-import { useAppDispatch } from '../../../hooks/reduxHooks';
+import { useAppDispatch } from '../../../hooks/helpers/reduxHooks';
 import {
   addSelected,
   removeSelected,

@@ -1,6 +1,6 @@
 import { HeaderFooterLink } from '../../atoms/HeaderFooterLink/HeaderFooterLink';
 import S from './HeaderFooterMenu.module.scss';
-import useIsStaffPage from '../../../hooks/useIsStaffPage';
+import useIsStaffPage from '../../../hooks/helpers/useIsStaffPage';
 import { useCallback } from 'react';
 import { toAnchor } from './utils';
 import { HeaderFooterType } from '../../../utils/types';

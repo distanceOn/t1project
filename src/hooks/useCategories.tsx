@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useGetCategoriesQuery } from '../app/api/productsApi';
-import { useAppDispatch, useAppSelector } from './reduxHooks';
+import { useAppDispatch, useAppSelector } from './helpers/reduxHooks';
 import {
   setCategories,
   setSelectedCategory,
@@ -9,6 +9,9 @@ import {
 
 export const useCategories = () => {
   const dispatch = useAppDispatch();
+  const { categories, selectedCategory } = useAppSelector(
+    state => state.products
+  );
   const {
     data: categoriesData,
     isLoading,
@@ -21,10 +24,6 @@ export const useCategories = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoriesData]);
-
-  const { categories, selectedCategory } = useAppSelector(
-    state => state.products
-  );
 
   const chooseSelectedCategory = (category: string) => {
     dispatch(setSelectedCategory(category));

@@ -1,5 +1,8 @@
 import { changeStep } from '../../../app/reducers/SelectionSlice';
-import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../hooks/helpers/reduxHooks';
 import { Button } from '../../atoms/Button/Button';
 import { Text } from '../../atoms/Text/Text';
 import S from './Steps.module.scss';

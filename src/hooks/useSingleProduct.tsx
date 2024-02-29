@@ -1,22 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useParams } from 'react-router-dom';
 import { useGetSingleProductQuery } from '../app/api/productsApi';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ProductInfoValuesChangable } from '../utils/types';
 
 export const useSingleProduct = () => {
-  const [isEdit, setIsEdit] = useState(false);
-
-  const formatSku = (sku: number) => {
-    const skuStr = sku.toString();
-    return skuStr.padStart(4, '0');
-  };
-
   const { id } = useParams();
-
   const { data, isLoading, isSuccess } = useGetSingleProductQuery(id);
 
-  const sku = formatSku(Number(id));
+  const [isEdit, setIsEdit] = useState(false);
+
+  const formatSku = useCallback((sku: number) => {
+    const skuStr = sku.toString();
+    return skuStr.padStart(4, '0');
+  }, []);
+
+  const sku = useMemo(() => {
+    return formatSku(Number(id));
+  }, [id, formatSku]);
 
   const {
     category,
@@ -30,11 +31,6 @@ export const useSingleProduct = () => {
     images,
   } = data || {};
 
-  const getDiscount = (price: number, discountPercentage: number) => {
-    return price && discountPercentage
-      ? price - Math.round((price * discountPercentage) / 100)
-      : price;
-  };
   const [inputValues, setInputValues] = useState<ProductInfoValuesChangable>({
     category,
     description,
@@ -44,9 +40,14 @@ export const useSingleProduct = () => {
     discountPercentage,
   });
 
-  useEffect(() => {
-    console.log(inputValues);
-  }, [inputValues]);
+  const getDiscount = useCallback(
+    (price: number, discountPercentage: number) => {
+      return price && discountPercentage
+        ? price - Math.round((price * discountPercentage) / 100)
+        : price;
+    },
+    []
+  );
 
   useEffect(() => {
     if (isSuccess) {

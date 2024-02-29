@@ -1,4 +1,4 @@
-import useIsStaffPage from '../../../hooks/useIsStaffPage';
+import useIsStaffPage from '../../../hooks/helpers/useIsStaffPage';
 import { Picture } from '../../atoms/Picture/Picture';
 import { Text } from '../../atoms/Text/Text';
 import { Title } from '../../atoms/Title/Title';
