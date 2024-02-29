@@ -7,7 +7,7 @@ import { toGetDiscount } from './utils/toGetDiscount';
 
 export const useSingleProduct = () => {
   const { id } = useParams();
-  const { data, isLoading, isSuccess } = useGetSingleProductQuery(id);
+  const { data, isLoading, isSuccess, error } = useGetSingleProductQuery(id);
 
   const [isEdit, setIsEdit] = useState(false);
 
@@ -71,5 +71,6 @@ export const useSingleProduct = () => {
     rating,
     title,
     images,
+    error,
   };
 };
