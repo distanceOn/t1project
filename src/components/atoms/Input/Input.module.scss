@@ -9,6 +9,16 @@
   border-radius: 4px;
   color: #444b58;
 
+  &[type='number'] {
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    -moz-appearance: textfield;
+  }
+
   &::placeholder {
     color: #b2b5bb;
   }

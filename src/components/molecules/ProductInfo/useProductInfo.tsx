@@ -51,7 +51,12 @@ export const useProductInfo = () => {
     setIsEdit(!isEdit);
   };
 
-  const defineValue = (key: string, value: string | number, add?: string) => {
+  const defineValue = (
+    key: string,
+    value: string | number,
+    add?: string,
+    type?: 'text' | 'number'
+  ) => {
     const formattedValue = add ? `${value + add}` : value;
 
     if (isEdit) {
@@ -61,6 +66,7 @@ export const useProductInfo = () => {
           onChange={newValue =>
             setInputValues({ ...inputValues, [key]: newValue })
           }
+          type={type}
         />
       );
     }

@@ -5,7 +5,7 @@ type InputProps = {
   value?: string | number;
   onChange: (value: string) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  type?: string;
+  type?: 'text' | 'number';
 };
 export const Input = ({
   value,

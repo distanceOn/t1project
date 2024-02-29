@@ -14,7 +14,7 @@ import { Faq } from '../../components/organisms/Faq/Faq';
 export const CatalogPage = () => {
   return (
     <div className={S.container}>
-      <GenericTemplate color='purple' padding='min'>
+      <GenericTemplate color='purple' padding='min' noSection>
         <HeaderFooter type='header' />
       </GenericTemplate>
 
@@ -48,7 +48,7 @@ export const CatalogPage = () => {
         <Faq />
       </GenericTemplate>
 
-      <GenericTemplate color='black' padding='min'>
+      <GenericTemplate color='black' padding='min' noSection>
         <HeaderFooter type='footer' />
       </GenericTemplate>
     </div>

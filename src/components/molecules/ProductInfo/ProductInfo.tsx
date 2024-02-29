@@ -48,13 +48,13 @@ export const ProductInfo = () => {
           <Text size='default' color='lightgrey'>
             Base price
           </Text>
-          {defineValue('price', price, '$')}
+          {defineValue('price', price, '$', 'number')}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Discount percentage
           </Text>
-          {defineValue('discountPercentage', discountPercentage, '%')}
+          {defineValue('discountPercentage', discountPercentage, '%', 'number')}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
