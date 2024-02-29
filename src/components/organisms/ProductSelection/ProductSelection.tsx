@@ -5,7 +5,7 @@ import { Title } from '../../atoms/Title/Title';
 import { ChoiceCard } from '../../molecules/ChoiceCard/ChoiceCard';
 import { Steps } from '../../molecules/Steps/Steps';
 import S from './ProductSelection.module.scss';
-import { useAppSelector } from '../../../hooks/reduxHooks';
+import { useAppSelector } from '../../../hooks/helpers/reduxHooks';
 import { useSelection } from '../../../hooks/useSelection';
 import { ProductCard } from '../../molecules/ProductCard/ProductCard';
 
@@ -24,13 +24,6 @@ export const ProductSelection = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step]);
 
-  useEffect(() => {
-    console.log(selected);
-  }, [selected]);
-
-  useEffect(() => {
-    console.log(total);
-  }, [total]);
   return (
     <div className={S.container}>
       <div className={S.header}>
@@ -60,7 +53,7 @@ export const ProductSelection = () => {
         <div className={total.length === 0 ? S.list : S.list_results}>
           {isLoading && <div className={S.loading}>loading...</div>}
           {total.length > 0
-            ? total.map((item, index) => (
+            ? total.map(item => (
                 <ProductCard
                   key={item.title}
                   title={item.title}
@@ -73,7 +66,7 @@ export const ProductSelection = () => {
                 <ChoiceCard
                   selected={selected}
                   category={category}
-                  key={index}
+                  key={category}
                 />
               ))}
         </div>

@@ -1,6 +1,6 @@
 import { HeaderFooterLink } from '../../atoms/HeaderFooterLink/HeaderFooterLink';
 import S from './HeaderFooterMenu.module.scss';
-import useIsStaffPage from '../../../hooks/useIsStaffPage';
+import useIsStaffPage from '../../../hooks/helpers/useIsStaffPage';
 import { useCallback } from 'react';
 import { toAnchor } from './utils';
 import { HeaderFooterType } from '../../../utils/types';
@@ -13,16 +13,19 @@ export const HeaderFooterMenu = ({ type }: HeaderFooterType) => {
 
   const handleLinkClick = useCallback(toAnchor, []);
 
-  const baseContent = items.map(({ name, link }, index) => (
-    <li key={index}>
-      <HeaderFooterLink
-        href={link}
-        onClick={link.includes('#') ? handleLinkClick : undefined}
-      >
-        {name}
-      </HeaderFooterLink>
-    </li>
-  ));
+  const baseContent = items.map(({ name, link }, index) => {
+    const isAnchor = link.includes('#');
+    return (
+      <li key={index}>
+        <HeaderFooterLink
+          href={link}
+          onClick={isAnchor ? handleLinkClick : undefined}
+        >
+          {name}
+        </HeaderFooterLink>
+      </li>
+    );
+  });
 
   const staffContent = (
     <HeaderFooterLink href='/'>Back to site</HeaderFooterLink>

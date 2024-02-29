@@ -1,22 +1,16 @@
-import React from 'react';
 import S from './Rating.module.scss';
-
-interface RatingProps {
-  value: number; // Текущее значение рейтинга
-  max?: number; // Максимально возможное значение рейтинга
-}
+import { Star } from './components/Star';
+import { RatingProps } from './types';
 
 const Rating: React.FC<RatingProps> = ({ value, max = 5 }) => {
-  const stars = Array.from({ length: max }, (_, index) =>
-    index < value ? 'full' : 'empty'
-  );
+  const stars = Array.from({ length: max }, (_, index) => ({
+    isFull: index < value,
+  }));
 
   return (
     <div className={S.rating}>
       {stars.map((star, index) => (
-        <span key={index} className={star === 'full' ? S.full : S.empty}>
-          {star === 'full' ? '★' : '☆'}
-        </span>
+        <Star key={index} isFull={star.isFull} />
       ))}
     </div>
   );

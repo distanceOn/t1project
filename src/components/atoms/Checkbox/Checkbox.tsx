@@ -12,10 +12,11 @@ export const Checkbox = ({
   isChecked,
   handleCheck,
 }: CheckboxProps) => {
+  const totalId = `#${id}`;
   return (
     <label htmlFor={id} className={S.container} onClick={handleCheck}>
       <input
-        id={`#${id}`}
+        id={totalId}
         className={isChecked ? S.checkbox_checked : S.checkbox}
         type='checkbox'
         checked={isChecked}

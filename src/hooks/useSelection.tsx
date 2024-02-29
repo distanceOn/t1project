@@ -1,33 +1,23 @@
-import { useAppDispatch, useAppSelector } from './reduxHooks';
+import { useAppDispatch, useAppSelector } from './helpers/reduxHooks';
 import { setTotal } from '../app/reducers/SelectionSlice';
+import { getTopProduct } from './utils/toGetTopProducts';
 
 export const useSelection = () => {
   const dispatch = useAppDispatch();
   const { selected } = useAppSelector(state => state.selection);
 
-  const getTopProduct = (results: any) => {
-    const products = results.products;
-    let topProduct = null;
-    let maxRating = 0;
-
-    products.forEach((product: any) => {
-      if (product.rating > maxRating) {
-        maxRating = product.rating;
-        topProduct = product;
-      }
-    });
-
-    return topProduct;
-  };
-
-  const getSelectionData = async (addresses: string[]) => {
+  const fetchTopProducts = async (addresses: string[]) => {
     const results = [];
 
     for (const address of addresses) {
-      const response = await fetch(address);
-      const data = await response.json();
-      const topProduct = getTopProduct(data);
-      results.push(topProduct);
+      try {
+        const response = await fetch(address);
+        const data = await response.json();
+        const topProduct = getTopProduct(data);
+        results.push(topProduct);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     }
 
     return { results };
@@ -38,7 +28,7 @@ export const useSelection = () => {
       const addresses = selected.map(
         item => `https://dummyjson.com/products/category/${item}`
       );
-      const result = await getSelectionData(addresses);
+      const result = await fetchTopProducts(addresses);
 
       dispatch(setTotal(result.results));
     }

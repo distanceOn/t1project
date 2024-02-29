@@ -1,21 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useParams } from 'react-router-dom';
 import { useGetSingleProductQuery } from '../app/api/productsApi';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { ProductInfoValuesChangable } from '../utils/types';
+import { toGetDiscount } from './utils/toGetDiscount';
 
 export const useSingleProduct = () => {
+  const { id } = useParams();
+  const { data, isLoading, isSuccess, error } = useGetSingleProductQuery(id);
+
   const [isEdit, setIsEdit] = useState(false);
 
-  const formatSku = (sku: number) => {
+  const formatSku = useCallback((sku: number) => {
     const skuStr = sku.toString();
     return skuStr.padStart(4, '0');
-  };
+  }, []);
 
-  const { id } = useParams();
+  const sku = useMemo(() => {
+    return formatSku(Number(id));
+  }, [id, formatSku]);
 
-  const { data, isLoading, isSuccess } = useGetSingleProductQuery(id);
-
-  const sku = formatSku(Number(id));
+  const getDiscount = useCallback(toGetDiscount, []);
 
   const {
     category,
@@ -29,19 +34,7 @@ export const useSingleProduct = () => {
     images,
   } = data || {};
 
-  const getDiscount = (price: number, discountPercentage: number) => {
-    return price && discountPercentage
-      ? price - Math.round((price * discountPercentage) / 100)
-      : price;
-  };
-  const [inputValues, setInputValues] = useState<{
-    category: string;
-    price: number;
-    stock: number;
-    brand: string;
-    description: string;
-    discountPercentage: number;
-  }>({
+  const [inputValues, setInputValues] = useState<ProductInfoValuesChangable>({
     category,
     description,
     brand,
@@ -49,10 +42,6 @@ export const useSingleProduct = () => {
     price,
     discountPercentage,
   });
-
-  useEffect(() => {
-    console.log(inputValues);
-  }, [inputValues]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -73,14 +62,15 @@ export const useSingleProduct = () => {
     id,
     isLoading,
     sku,
-    getDiscount,
     discountPercentage,
     inputValues,
     setInputValues,
+    getDiscount,
     isEdit,
     setIsEdit,
     rating,
     title,
     images,
+    error,
   };
 };

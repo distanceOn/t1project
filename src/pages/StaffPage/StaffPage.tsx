@@ -6,7 +6,7 @@ import S from './StaffPage.module.scss';
 export const StaffPage = () => {
   return (
     <div className={S.container}>
-      <GenericTemplate color='purple' padding='min'>
+      <GenericTemplate color='purple' padding='min' noSection>
         <HeaderFooter type='header' />
       </GenericTemplate>
       <GenericTemplate color='white' padding='small'>

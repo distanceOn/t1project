@@ -6,9 +6,14 @@ export const GenericTemplate = ({
   color,
   padding,
   id,
+  noSection,
 }: GenericTemplateProps) => {
   const styles = { color, padding };
   const totalClass = getTotalClass(styles);
+
+  if (noSection) {
+    return <div className={totalClass}>{children}</div>;
+  }
 
   return (
     <section id={id} className={totalClass}>

@@ -1,5 +1,8 @@
 import { changeStep } from '../../../app/reducers/SelectionSlice';
-import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../hooks/helpers/reduxHooks';
 import { Button } from '../../atoms/Button/Button';
 import { Text } from '../../atoms/Text/Text';
 import S from './Steps.module.scss';
@@ -9,7 +12,8 @@ export const Steps = () => {
   const { step, selected } = useAppSelector(state => state.selection);
   const handleClick = () => {
     if (selected.length === 0) return;
-    dispatch(changeStep(step !== 1 ? 1 : 2));
+    const finalStep = step === 1 ? 2 : 1;
+    dispatch(changeStep(finalStep));
   };
   return (
     <div className={S.container}>

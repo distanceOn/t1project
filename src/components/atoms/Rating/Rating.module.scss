@@ -1,5 +1,3 @@
-/* Rating.module.scss */
-
 .rating {
   display: flex;
   gap: 0.4rem;
@@ -16,9 +14,9 @@
 }
 
 .full {
-  color: #f14f4f; /* Цвет для заполненной звезды */
+  color: #f14f4f;
 }
 
 .empty {
-  color: #cccccc; /* Цвет для пустой звезды */
+  color: #cccccc;
 }

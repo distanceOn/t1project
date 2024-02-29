@@ -12,7 +12,7 @@ export const FaqItem = ({ question, answer }: FaqItemProps) => {
   const [open, setOpen] = useState(false);
 
   const iconClassName = `${S.icon} ${open ? S.opened : S.closed}`;
-  const textClassName = `${S.answer} ${open ? S.answer_opened : ''}`;
+  const textClassName = `${S.answer} ${open && S.answer_opened}`;
 
   const handleOpen = () => {
     setOpen(!open);

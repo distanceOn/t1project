@@ -5,22 +5,28 @@ type InputProps = {
   value?: string | number;
   onChange: (value: string) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  type?: 'text' | 'number';
 };
-export const Input = ({ value, onChange, onKeyDown }: InputProps) => {
-  const [valueInput, setValueInput] = useState(value);
+export const Input = ({
+  value,
+  onChange,
+  onKeyDown,
+  type = 'text',
+}: InputProps) => {
+  const [inputValue, setInputValue] = useState(value || '');
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (value) {
-      setValueInput(e.target.value);
-    }
+    setInputValue(e.target.value);
     onChange(e.target.value);
   };
+
   return (
     <input
-      value={value && valueInput}
+      value={inputValue}
       onChange={handleChange}
       onKeyDown={onKeyDown}
       className={S.input}
       placeholder='Search by title'
+      type={type}
     />
   );
 };
