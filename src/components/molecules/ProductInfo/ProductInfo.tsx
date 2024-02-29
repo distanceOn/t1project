@@ -68,7 +68,7 @@ export const ProductInfo = () => {
           <Text size='default' color='lightgrey'>
             Stock
           </Text>
-          {defineValue('stock', stock)}
+          {defineValue('stock', stock, '', 'number')}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
