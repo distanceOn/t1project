@@ -6,6 +6,7 @@ import { getInfoByImage } from './utils';
 
 export const Teammate = ({ image }: TeammateProps) => {
   const { name, position } = getInfoByImage(image);
+
   return (
     <div className={S.container}>
       <Picture size='xlarge' image={image} />

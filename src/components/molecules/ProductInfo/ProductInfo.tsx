@@ -2,21 +2,25 @@ import Rating from '../../atoms/Rating/Rating';
 import { Text } from '../../atoms/Text/Text';
 import { Title } from '../../atoms/Title/Title';
 import S from './ProductInfo.module.scss';
-import { useSingleProduct } from '../../../hooks/useSingleProduct';
+import { Button } from '../../atoms/Button/Button';
+import { useProductInfo } from './useProductInfo';
 
 export const ProductInfo = () => {
   const {
-    category,
-    description,
-    brand,
-    stock,
-    discountPercentage,
-    price,
-    rating,
     title,
     sku,
-    discount,
-  } = useSingleProduct();
+    rating,
+    price,
+    discountPercentage,
+    category,
+    brand,
+    defineValue,
+    getDiscount,
+    description,
+    handleClickBtn,
+    isEdit,
+    stock,
+  } = useProductInfo();
 
   return (
     <div className={S.container}>
@@ -44,59 +48,51 @@ export const ProductInfo = () => {
           <Text size='default' color='lightgrey'>
             Base price
           </Text>
-          <Text size='default' color='grey'>
-            {price}$
-          </Text>
+          {defineValue('price', price, '$', 'number')}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Discount percentage
           </Text>
-          <Text size='default' color='grey'>
-            {discountPercentage}%
-          </Text>
+          {defineValue('discountPercentage', discountPercentage, '%', 'number')}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Discount price
           </Text>
           <Text size='default' color='grey'>
-            {discount}$
+            {getDiscount(price, discountPercentage)}$
           </Text>
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Stock
           </Text>
-          <Text size='default' color='grey'>
-            {stock}
-          </Text>
+          {defineValue('stock', stock, '', 'number')}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Brand
           </Text>
-          <Text size='default' color='grey'>
-            {brand}
-          </Text>
+
+          {defineValue('brand', brand)}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Category
           </Text>
-          <Text size='default' color='grey'>
-            {category}
-          </Text>
+          {defineValue('category', category)}
         </div>
         <div className={S.item}>
           <Text size='default' color='lightgrey'>
             Description
           </Text>
-          <Text size='default' color='grey'>
-            {description}
-          </Text>
+          {defineValue('description', description)}
         </div>
       </div>
+      <Button onClick={handleClickBtn} color='primary' type='default'>
+        {isEdit ? 'Save' : 'Edit'}
+      </Button>
     </div>
   );
 };

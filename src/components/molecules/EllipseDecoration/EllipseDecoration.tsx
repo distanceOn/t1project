@@ -11,27 +11,13 @@ export const EllipseDecoration = ({
 }: EllipseDecorationProps) => {
   const decorationClassName = getDecorationClassName(size);
 
-  if (size === 'small') {
-    return (
-      <div className={S.container + ' ' + className}>
-        <Decoration className={decorationClassName} />
-        <BgEllipse className={S.ellipse} />
-      </div>
-    );
-  }
-
-  if (size === 'large') {
-    return (
-      <div className={S.container + ' ' + className}>
-        <Decoration className={decorationClassName} />
-        {ellipse === 'large' && <BgEllipse className={S.ellipse_large} />}
-      </div>
-    );
-  }
-
   return (
-    <div className={S.container + ' ' + className}>
+    <div className={`${S.container} ${className}`}>
       <Decoration className={decorationClassName} />
+      {size === 'small' && <BgEllipse className={S.ellipse} />}
+      {size === 'large' && ellipse === 'large' && (
+        <BgEllipse className={S.ellipse_large} />
+      )}
     </div>
   );
 };

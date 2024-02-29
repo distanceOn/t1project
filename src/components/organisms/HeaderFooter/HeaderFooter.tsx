@@ -1,4 +1,4 @@
-import useIsStaffPage from '../../../hooks/useIsStaffPage';
+import useIsStaffPage from '../../../hooks/helpers/useIsStaffPage';
 import { HeaderFooterType } from '../../../utils/types';
 import { Logo } from '../../atoms/Logo/Logo';
 import { HeaderFooterMenu } from '../../molecules/HeaderFooterMenu/HeaderFooterMenu';

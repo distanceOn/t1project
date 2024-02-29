@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import useIsStaffPage from '../../../hooks/useIsStaffPage';
+import useIsStaffPage from '../../../hooks/helpers/useIsStaffPage';
 
 import S from './Products.module.scss';
 import { useEffect, useState } from 'react';
@@ -8,7 +8,7 @@ import { Title } from '../../atoms/Title/Title';
 import { Search } from '../../molecules/Search/Search';
 import { ProductCard } from '../../molecules/ProductCard/ProductCard';
 import { Button } from '../../atoms/Button/Button';
-import { useAppSelector } from '../../../hooks/reduxHooks';
+import { useAppSelector } from '../../../hooks/helpers/reduxHooks';
 
 export const Products = () => {
   const navigate = useNavigate();

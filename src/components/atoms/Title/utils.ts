@@ -1,32 +1,28 @@
 import S from './Title.module.scss';
-import { TitleColors, TitleSizes, TitleStyles } from './types';
+import { TitleStyles } from './types';
+import { colors, sizes } from './constants';
 
-const getTitleColor = (color: TitleColors) => {
-  const colors = {
-    white: S.color_white,
-    grey: S.color_grey,
-    black: S.color_black,
+export const getTitleClasses = ({ color, size }: TitleStyles) => {
+  if (!color || !Object.keys(colors).includes(color)) {
+    throw new Error('Invalid color prop');
+  }
+
+  if (!size || !Object.keys(sizes).includes(size)) {
+    throw new Error('Invalid size prop');
+  }
+
+  return {
+    color: colors[color],
+    size: sizes[size],
   };
-  return colors[color];
-};
-
-const getTitleSize = (size: TitleSizes) => {
-  const sizes = {
-    min: S.title_min,
-    xmin: S.title_xmin,
-    small: S.title_small,
-    default: S.title_default,
-    large: S.title_large,
-  };
-
-  return sizes[size];
 };
 
 export const getTotalTitleClassName = ({ color, size }: TitleStyles) => {
   const baseClass = S.title;
-
-  const colorClass = getTitleColor(color);
-  const sizeClass = getTitleSize(size);
+  const { color: colorClass, size: sizeClass } = getTitleClasses({
+    color,
+    size,
+  });
 
   const totalClass = `${baseClass} ${colorClass} ${sizeClass}`;
 

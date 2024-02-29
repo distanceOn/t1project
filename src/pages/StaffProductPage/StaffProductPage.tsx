@@ -6,7 +6,7 @@ import { HeaderFooter } from '../../components/organisms/HeaderFooter/HeaderFoot
 export const StaffProductPage = () => {
   return (
     <div className={S.page}>
-      <GenericTemplate color='purple' padding='min'>
+      <GenericTemplate color='purple' padding='min' noSection>
         <HeaderFooter type='header' />
       </GenericTemplate>
       <GenericTemplate color='white' padding='small'>

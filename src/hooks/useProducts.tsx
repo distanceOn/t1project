@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from './reduxHooks';
+import { useAppDispatch, useAppSelector } from './helpers/reduxHooks';
 import { setData, setSkip } from '../app/reducers/ProductsSlice';
-import { useProductsService } from './useProductsService';
+import { useProductsService } from './helpers/useProductsService';
 
 export const useProducts = () => {
   const dispatch = useAppDispatch();
